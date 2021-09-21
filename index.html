@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-09-22 00:03:14 / 修改时间：00:12:10" itemprop="dateCreated datePublished" datetime="2021-09-22T00:03:14+08:00">2021-09-22</time>
+              <time title="创建时间：2021-09-22 00:03:14 / 修改时间：00:15:37" itemprop="dateCreated datePublished" datetime="2021-09-22T00:03:14+08:00">2021-09-22</time>
             </span>
 
           <br>
@@ -244,125 +244,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>[Toc]</p>
-<h1 id="深入应用C-11"><a href="#深入应用C-11" class="headerlink" title="深入应用C++11"></a><a target="_blank" rel="noopener" href="https://github.com/qicosmos/cosmos.git">深入应用C++11</a></h1><h2 id="一、C-11重要特性"><a href="#一、C-11重要特性" class="headerlink" title="一、C++11重要特性"></a>一、C++11重要特性</h2><h3 id="1、类型推导"><a href="#1、类型推导" class="headerlink" title="1、类型推导"></a>1、类型推导</h3><ul>
+          <h1 id="深入应用C-11"><a href="#深入应用C-11" class="headerlink" title="深入应用C++11"></a><a target="_blank" rel="noopener" href="https://github.com/qicosmos/cosmos.git">深入应用C++11</a></h1><h2 id="一、C-11重要特性"><a href="#一、C-11重要特性" class="headerlink" title="一、C++11重要特性"></a>一、C++11重要特性</h2><h3 id="1、类型推导"><a href="#1、类型推导" class="headerlink" title="1、类型推导"></a>1、类型推导</h3><ul>
 <li>auto</li>
 <li>decltype</li>
 </ul>
-<h4 id="auto："><a href="#auto：" class="headerlink" title="auto："></a>auto：</h4><h4 id="（1）auto关键字的意义"><a href="#（1）auto关键字的意义" class="headerlink" title="（1）auto关键字的意义"></a>（1）auto关键字的意义</h4><ul>
-<li>不同于Python等动态语言的<u><strong>运行时</strong></u>变量类型推到，隐式类型转换定义的类型在<u><strong>编译器</strong></u>推导类型。</li>
-<li>auto类型推导是隐式类型推导</li>
-<li>auto不是一个实际的类型声明，只是一个类型声明的“占位符”。</li>
-<li>使用auto声明的变量必须马上初始化，以便编译器可以推断出它的类型，并在编译时将auto替换为真正的类型。</li>
-<li>在旧标准中， “auto”代表“具有自动存储期的局部变量”。在c++11中，不再表示该含义，而是改成了一个类型指示符。</li>
-</ul>
-<h4 id="（2）auto的推导规则"><a href="#（2）auto的推导规则" class="headerlink" title="（2）auto的推导规则"></a>（2）auto的推导规则</h4><p>cv限定符： cv-qualifier, const和volatile限定符的统称。</p>
-<ul>
-<li>当不声明为指针或者引用时， auto的推导结果和初始化表达式<strong>抛弃</strong>引用和CV限定符后类型一致</li>
-<li>当声明为指针或者引用时， auto的推到结果将保持初始化表达式的CV属性</li>
-</ul>
-<h4 id="（3）auto的限制"><a href="#（3）auto的限制" class="headerlink" title="（3）auto的限制"></a>（3）auto的限制</h4><ul>
-<li>auto不能用于函数参数</li>
-<li>不能用于**<u>非静态</u>** <u><strong>成员变量</strong></u></li>
-<li>无法定义数组</li>
-<li>无法推导模板参数</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Bar&lt;<span class="keyword">int</span>&gt; bar;</span><br><span class="line">BAr&lt;<span class="keyword">auto</span>&gt; bb = bar;  <span class="comment">//error！</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="（4）auto的适用情况"><a href="#（4）auto的适用情况" class="headerlink" title="（4）auto的适用情况"></a>（4）auto的适用情况</h4><ul>
-<li>迭代器定义 </li>
-<li>不关心具体类型，且类型声明比较长</li>
-<li>无法确定变量类型</li>
-</ul>
-<h4 id="decltype："><a href="#decltype：" class="headerlink" title="decltype："></a>decltype：</h4><h4 id="（1）获取表达式的类型"><a href="#（1）获取表达式的类型" class="headerlink" title="（1）获取表达式的类型"></a>（1）获取表达式的类型</h4><p>在**<u>编译时</u>**推导一个表达式的类型。</p>
-<ul>
-<li>decltype可以精确的推导出表达式定义的类型，而不会像auto在某些情况下丢弃CV限定符。</li>
-</ul>
-<h4 id="（2）推导规则"><a href="#（2）推导规则" class="headerlink" title="（2）推导规则"></a>（2）推导规则</h4><p>decltype（exp）</p>
-<ul>
-<li>exp是标识符、类访问表达式， 推导类型和exp一致</li>
-<li>exp是函数调用， 推到类型和返回值类型一致</li>
-<li>其他情况， 若exp是一个右值，推到类型为exp类型的左值引用，否则和exp一致</li>
-</ul>
-<h4 id="（3）应用"><a href="#（3）应用" class="headerlink" title="（3）应用"></a>（3）应用</h4><ul>
-<li><p>多用于泛型编程中。 <code>decltype( container().begin() _it)</code></p>
-</li>
-<li><p>也常用于通过变量表达式抽取变量类型。  </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">decltype</span>(v)::value_type i = <span class="number">0</span>;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="返回类型后置：auto和decltype的结合"><a href="#返回类型后置：auto和decltype的结合" class="headerlink" title="返回类型后置：auto和decltype的结合"></a>返回类型后置：auto和decltype的结合</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> U&gt;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">add</span><span class="params">(T t, U u)</span> -&gt; <span class="title">decltype</span><span class="params">(t+u)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> t+u;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>&amp; <span class="title">foo</span><span class="params">(<span class="keyword">int</span>&amp; i)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">float</span>&amp; <span class="title">foo</span><span class="params">(<span class="keyword">float</span>&amp; f)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">func</span><span class="params">(T&amp; val)</span> -&gt; <span class="title">decltype</span><span class="params">(foo(val))</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">foo</span>(val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、模板细节"><a href="#2、模板细节" class="headerlink" title="2、模板细节"></a>2、模板细节</h3><h4 id="gt-gt-的二义性"><a href="#gt-gt-的二义性" class="headerlink" title="**&gt;&gt;**的二义性"></a>**&gt;&gt;**的二义性</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Foo&lt;<span class="number">100</span> &gt;&gt; <span class="number">2</span>&gt; xx;</span><br><span class="line"></span><br><span class="line">Foo&lt;(<span class="number">100</span> &gt;&gt; <span class="number">2</span>)&gt; xx;</span><br></pre></td></tr></table></figure>
-
-<h4 id="模板的别名"><a href="#模板的别名" class="headerlink" title="模板的别名"></a>模板的别名</h4><p>using 别名语法。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*<span class="keyword">func_t</span>)</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">int</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">func_t</span> = <span class="built_in"><span class="keyword">void</span></span> (*)(<span class="keyword">int</span>,<span class="keyword">int</span>);</span><br></pre></td></tr></table></figure>
-
-<h4 id="函数模板的默认模板参数"><a href="#函数模板的默认模板参数" class="headerlink" title="函数模板的默认模板参数"></a>函数模板的默认模板参数</h4><ul>
-<li>函数模板参数的填充顺序是<strong>从右向左</strong></li>
-<li>默认模板参数和模板参数自动推导同时使用时，若函数模板无法自动推导出参数类型，则使用默认模板参数</li>
-</ul>
-<h3 id="3、列表初始化"><a href="#3、列表初始化" class="headerlink" title="3、列表初始化"></a>3、列表初始化</h3><p><strong>聚合类型</strong></p>
-<p><strong>std::initializer_list<T></strong></p>
-<p><strong>类型收窄</strong></p>
-<h3 id="4、基于范围的for循环"><a href="#4、基于范围的for循环" class="headerlink" title="4、基于范围的for循环"></a>4、基于范围的for循环</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line">...</span><br><span class="line">std::vector&lt;<span class="keyword">int</span>&gt; arr;</span><br><span class="line">std::for_each(arr.<span class="built_in">begin</span>(),arr.<span class="built_in">end</span>(), <span class="built_in">do_work</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">//range-based</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> n : arr)</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>当range-based遍历map时：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">auto</span>&amp; val : map_m)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>需要注意：</p>
-<ol>
-<li>val类型为<code>std::pair</code>。因此对于map这种<strong>关联性容器</strong>，需要使用val.first和val.second来提取键值</li>
-<li>auto自动推导出来的类型时容器中的value_type,不是迭代器</li>
-</ol>
-<p>另外，要注意容器本身的一些约束：</p>
-<ul>
-<li>如std::set的内部元素时只读的，因此for循环中 auto &amp; 推导为 const int &amp;</li>
-<li>range_based_for循环倾向于在循环前确定好迭代的范围，而不是在每次迭代器调用一次arr.end();</li>
-</ul>
-<h3 id="5、range-based-for-自定义类型"><a href="#5、range-based-for-自定义类型" class="headerlink" title="5、range_based_for + 自定义类型"></a>5、range_based_for + 自定义类型</h3><p>基于范围的for循环只是普通for的语法糖。需要查找容易的begin和end迭代器。</p>
-<ul>
-<li>普通array对象 —-begin为array的首地址，end为首地址+容器长度</li>
-<li>类对象    ———-查找begin()和end()方法来定位begin和end对象</li>
-<li>使用全局的begin和end函数来定位begin和end迭代器</li>
-</ul>
-<p>对于自定义对象，分别实现begin和end方法即可。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _RANGE_HPP_#<span class="meta-keyword">define</span> _RANGE_HPP_namespace detail_range&#123;	template<span class="meta-string">&lt;typename value_t&gt;</span>	class RangeImpl	&#123;		class Iterator;	public:		RangeImpl(value_t begin, value_t end, value_t step = 1) :m_begin(begin), m_end(end), m_step(step)		&#123;			<span class="meta-keyword">if</span> (step &gt; 0 &amp;&amp; m_begin &gt;= m_end)				throw std::logic_error(<span class="meta-string">&quot;end must greater than begin.&quot;</span>);			<span class="meta-keyword">else</span> <span class="meta-keyword">if</span> (step <span class="meta-string">&lt; 0 &amp;&amp; m_begin &lt;= m_end)				throw std::logic_error(&quot;end must less than begin.&quot;);			m_step_end = (m_end - m_begin) / m_step;			if (m_begin + m_step_end*m_step != m_end)			&#123;				m_step_end++;			&#125;		&#125;		Iterator begin()		&#123;			return Iterator(0, *this);		&#125;		Iterator end()		&#123;			return Iterator(m_step_end, *this);		&#125;		value_t operator[](int s)		&#123;			return m_begin + s*m_step;		&#125;		int size()		&#123;			return m_step_end;		&#125;	private:		value_t m_begin;		value_t m_end;		value_t m_step;		int m_step_end;		class Iterator		&#123;		public:			Iterator(int start, RangeImpl&amp; range) : m_current_step(start), m_range(range)			&#123;				m_current_value = m_range.m_begin + m_current_step*m_range.m_step;			&#125;			value_t operator*() &#123; return m_current_value; &#125;			const Iterator* operator++()			&#123;				m_current_value += m_range.m_step;				m_current_step++;				return this;			&#125;			bool operator==(const Iterator&amp; other)			&#123;				return m_current_step == other.m_current_step;			&#125;			bool operator!=(const Iterator&amp; other)			&#123;				return m_current_step != other.m_current_step;			&#125;			const Iterator* operator--()			&#123;				m_current_value -= m_range.m_step;				m_current_step--;				return this;			&#125;		private:			value_t m_current_value;			int m_current_step;			RangeImpl&amp; m_range;		&#125;;	&#125;;	template&lt;typename T, typename V&gt;</span>	auto Range(T begin, T end, V stepsize)-&gt;RangeImpl<span class="meta-string">&lt;decltype(begin + end + stepsize)&gt;</span>	&#123;		return RangeImpl<span class="meta-string">&lt;decltype(begin + end + stepsize)&gt;</span>(begin, end, stepsize);	&#125;	template<span class="meta-string">&lt;typename T&gt;</span>	RangeImpl<span class="meta-string">&lt;T&gt;</span> Range(T begin, T end)	&#123;		return RangeImpl<span class="meta-string">&lt;T&gt;</span>(begin, end, 1);	&#125;	template<span class="meta-string">&lt;typename T&gt;</span>	RangeImpl<span class="meta-string">&lt;T&gt;</span> Range(T end)	&#123;		return RangeImpl<span class="meta-string">&lt;T&gt;</span>(T(), end, 1);	&#125;&#125;#<span class="meta-keyword">endif</span>  <span class="comment">//_RANGE_HPP_</span></span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="6、-std-function-和-bind"><a href="#6、-std-function-和-bind" class="headerlink" title="6、 std::function 和 bind"></a>6、 std::function 和 bind</h3><h4 id="6-1-可调用对象"><a href="#6-1-可调用对象" class="headerlink" title="6.1 可调用对象"></a>6.1 可调用对象</h4><ul>
-<li>函数指针</li>
-<li>仿函数（具有operator()方法的类)</li>
-<li>可被转化为函数指针的类对象</li>
-<li>类成员（函数）指针</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数指针void(* func_ptr)(void);//仿函数struct Foo&#123;    operator()    &#123;        ...    &#125;    ...&#125;;Foo foo;foo();//可被转化为函数指针的类struct Bar&#123;    using fr_t = void(*) (void);    static void func(void)    &#123;        ...    &#125;    operator fr_t(void)    &#123;        return fr_t;    &#125;&#125;;Bar bar;bar();//类成员函数指针void (A::*mem_func_ptr)(void)    = &amp;A::mem_func;//类成员指针int A::*mem_obj_ptr    = &amp;A::a_;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="6-2-std-function—–函数对象包装器"><a href="#6-2-std-function—–函数对象包装器" class="headerlink" title="6.2 std::function—–函数对象包装器"></a>6.2 std::function—–函数对象包装器</h4><ul>
-<li>给std::function填入合适的函数签名，则变成一个可以容纳这一类调用方式的“函数包装器”</li>
-<li>可以取代函数指针，保存函数延迟执行，适合做<strong>回调函数</strong></li>
-</ul>
-<h4 id="6-3-std-bind—-绑定器"><a href="#6-3-std-bind—-绑定器" class="headerlink" title="6.3 std::bind—-绑定器"></a>6.3 std::bind—-绑定器</h4><ul>
-<li>将可调用对象与其参数一起绑定成一个仿函数</li>
-<li>将多元可调用对象转成一元或(n-1)元可调用对象。 <strong>std::placeholders:: _1</strong>是一个占位符。</li>
-<li>可组合多个函数</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> f = <span class="built_in">bind</span>(logical_and&lt;<span class="keyword">bool</span>&gt;(),             <span class="built_in">bind</span>(greater&lt;<span class="keyword">int</span>&gt;(),_1,<span class="number">5</span>),             <span class="built_in">bind</span>(less_equal&lt;<span class="keyword">int</span>&gt;(),_1,<span class="number">10</span>));<span class="comment">//判断大于5，小于10的功能闭包</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="7、lambda表达式"><a href="#7、lambda表达式" class="headerlink" title="7、lambda表达式"></a>7、lambda表达式</h3><p>基本用法：</p>
-<p><strong>[ capture ] (params) opt -&gt;ret {body};</strong></p>
-<ul>
-<li>[] 不捕获任何变量</li>
-<li>[&amp;] 捕获外部作用域所有变量，并作为引用在函数体中使用</li>
-<li>[=] 捕获外部作用域所有变量，并作为副本在函数体中使用</li>
-<li>[=, &amp;foo] 按值捕获所有变量，按引用捕获foo</li>
-<li>[bar] 按值捕获bar，不捕获其他变量</li>
-<li>[this] 捕获当前类的this指针</li>
-</ul>
-<h3 id="8、tuple元组"><a href="#8、tuple元组" class="headerlink" title="8、tuple元组"></a>8、tuple元组</h3><hr>
-<h2 id="二、改进C-程序性能"><a href="#二、改进C-程序性能" class="headerlink" title="二、改进C++程序性能"></a>二、改进C++程序性能</h2><h3 id="1、右值引用"><a href="#1、右值引用" class="headerlink" title="1、右值引用"></a>1、右值引用</h3><h3 id="2、move语义"><a href="#2、move语义" class="headerlink" title="2、move语义"></a>2、move语义</h3><h3 id="3、forward和完美转发"><a href="#3、forward和完美转发" class="headerlink" title="3、forward和完美转发"></a>3、forward和完美转发</h3><h3 id="4、emplace-back"><a href="#4、emplace-back" class="headerlink" title="4、emplace_back"></a>4、emplace_back</h3><h3 id="5、无序容器"><a href="#5、无序容器" class="headerlink" title="5、无序容器"></a>5、无序容器</h3><h2 id="三、提高C-代码质量"><a href="#三、提高C-代码质量" class="headerlink" title="三、提高C++代码质量"></a>三、提高C++代码质量</h2><h3 id="1、type-traits—-类型萃取"><a href="#1、type-traits—-类型萃取" class="headerlink" title="1、type_traits—-类型萃取"></a>1、type_traits—-类型萃取</h3><h3 id="2、可变参数模板"><a href="#2、可变参数模板" class="headerlink" title="2、可变参数模板"></a>2、可变参数模板</h3><h3 id="3、综合应用"><a href="#3、综合应用" class="headerlink" title="3、综合应用"></a>3、综合应用</h3><h2 id="四、解决内存C-内存泄露问题"><a href="#四、解决内存C-内存泄露问题" class="headerlink" title="四、解决内存C++内存泄露问题"></a>四、解决内存C++内存泄露问题</h2><h3 id="1、shared-ptr"><a href="#1、shared-ptr" class="headerlink" title="1、shared_ptr"></a>1、shared_ptr</h3><h3 id="2、unique-ptr"><a href="#2、unique-ptr" class="headerlink" title="2、unique_ptr"></a>2、unique_ptr</h3><h3 id="3、weak-ptr"><a href="#3、weak-ptr" class="headerlink" title="3、weak_ptr"></a>3、weak_ptr</h3><h3 id="4、第三方库内存管理"><a href="#4、第三方库内存管理" class="headerlink" title="4、第三方库内存管理"></a>4、第三方库内存管理</h3><h2 id="五、多线程开发"><a href="#五、多线程开发" class="headerlink" title="五、多线程开发"></a>五、多线程开发</h2><h3 id="1、线程"><a href="#1、线程" class="headerlink" title="1、线程"></a>1、线程</h3><h3 id="2、互斥量"><a href="#2、互斥量" class="headerlink" title="2、互斥量"></a>2、互斥量</h3><h3 id="3、条件变量"><a href="#3、条件变量" class="headerlink" title="3、条件变量"></a>3、条件变量</h3><h3 id="4、原子变量"><a href="#4、原子变量" class="headerlink" title="4、原子变量"></a>4、原子变量</h3><h3 id="5、call-once、once-flag"><a href="#5、call-once、once-flag" class="headerlink" title="5、call_once、once_flag"></a>5、call_once、once_flag</h3><h3 id="6、异步操作"><a href="#6、异步操作" class="headerlink" title="6、异步操作"></a>6、异步操作</h3><h3 id="7、线程异步操作函数"><a href="#7、线程异步操作函数" class="headerlink" title="7、线程异步操作函数"></a>7、线程异步操作函数</h3><h2 id="六、便利的工具"><a href="#六、便利的工具" class="headerlink" title="六、便利的工具"></a>六、便利的工具</h2><h3 id="1、chrono库"><a href="#1、chrono库" class="headerlink" title="1、chrono库"></a>1、chrono库</h3><h3 id="2、类型转换"><a href="#2、类型转换" class="headerlink" title="2、类型转换"></a>2、类型转换</h3><h3 id="3、宽窄字符转换"><a href="#3、宽窄字符转换" class="headerlink" title="3、宽窄字符转换"></a>3、宽窄字符转换</h3><h2 id="七、其他特性"><a href="#七、其他特性" class="headerlink" title="七、其他特性"></a>七、其他特性</h2><h3 id="1、委托构造函数和继承构造函数"><a href="#1、委托构造函数和继承构造函数" class="headerlink" title="1、委托构造函数和继承构造函数"></a>1、委托构造函数和继承构造函数</h3><h3 id="2、原始字面量"><a href="#2、原始字面量" class="headerlink" title="2、原始字面量"></a>2、原始字面量</h3><h3 id="3、final和override关键字"><a href="#3、final和override关键字" class="headerlink" title="3、final和override关键字"></a>3、final和override关键字</h3><h3 id="4、内存对齐"><a href="#4、内存对齐" class="headerlink" title="4、内存对齐"></a>4、内存对齐</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/22/C++11/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -410,7 +303,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-09-22 00:03:14 / 修改时间：00:12:07" itemprop="dateCreated datePublished" datetime="2021-09-22T00:03:14+08:00">2021-09-22</time>
+              <time title="创建时间：2021-09-22 00:03:14 / 修改时间：00:16:00" itemprop="dateCreated datePublished" datetime="2021-09-22T00:03:14+08:00">2021-09-22</time>
             </span>
 
           <br>
@@ -438,335 +331,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>[Toc]</p>
-<h1 id="C-项目"><a href="#C-项目" class="headerlink" title="C++项目"></a>C++项目</h1><h3 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h3><ul>
+          <h1 id="C-项目"><a href="#C-项目" class="headerlink" title="C++项目"></a>C++项目</h1><h3 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h3><ul>
 <li>文字<ul>
 <li><a target="_blank" rel="noopener" href="http://www.buildyourownlisp.com/">Build Your Own Lisp</a></li>
 <li><a target="_blank" rel="noopener" href="https://viewsourcecode.org/snaptoken/kilo/">Build Your Own Text Editor</a></li>
 <li><a target="_blank" rel="noopener" href="https://eli.thegreenplace.net/2017/concurrent-servers-part-1-introduction/">Concurrent Servers</a></li>
 <li><a target="_blank" rel="noopener" href="http://digitalsoundandmusic.com/chapters/ch5/5-3/">Digital sound and music</a></li>
-<li><a target="_blank" rel="noopener" href="https://arjunsreedharan.org/post/82710718100/kernels-101-lets-write-a-kernel">Kernels 101 – Let’s write a Kernel</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.saminiir.com/lets-code-tcp-ip-stack-1-ethernet-arp">Let’s code a TCP/IP stack</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/tuhdo/os01">Operating Systems: From 0 to 1</a></li>
-<li><a target="_blank" rel="noopener" href="https://norasandler.com/2017/11/29/Write-a-Compiler.html">Writing a C Compiler</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.tartanllama.xyz/writing-a-linux-debugger-setup/">Writing a Linux Debugger</a></li>
-<li><a target="_blank" rel="noopener" href="http://users.cs.cf.ac.uk/Dave.Marshall/C/node33.html#SECTION003310000000000000000">Write a RPC framework</a></li>
-<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000007408126">实现一个简单的编译器</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.shiyanlou.com/courses/1105">用 C 编写打字练习软件</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.shiyanlou.com/courses/670">用 C 语言编写自己的编程语言</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.shiyanlou.com/courses/231">缓冲区溢出漏洞实验</a></li>
 </ul>
-</li>
-<li>视频<ul>
-<li><a target="_blank" rel="noopener" href="https://www.udemy.com/course/learn-c-game-development/">Learn C++ Game Development</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.shiyanlou.com/courses/1218">C++ 解决迷宫问题</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.shiyanlou.com/courses/1182">C++ 使用 openGL 实现吃豆人游戏</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av62785783">C++ 项目实战</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av7126182">牛 B 闪闪坦克大战</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av67260826">微信飞机大战</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av65016216">小游戏完整项目制作</a></li>
-</ul>
-</li>
-</ul>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h1 id="C-中基于项目的教程"><a href="#C-中基于项目的教程" class="headerlink" title="C 中基于项目的教程"></a>C 中基于项目的教程</h1><p>致力于用 C 制作小型到大型项目的教程列表。</p>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/rby90/project-based-tutorials-in-c#computer-architecture">计算机架构</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/rby90/project-based-tutorials-in-c#computer-networking">计算机网络</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/rby90/project-based-tutorials-in-c#databases">数据库</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/rby90/project-based-tutorials-in-c#game-development">游戏开发</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/rby90/project-based-tutorials-in-c#operating-systems">操作系统</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/rby90/project-based-tutorials-in-c#programming-languages">编程语言</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/rby90/project-based-tutorials-in-c#uncategorized">未分类</a></li>
-</ul>
-<h2 id="计算机架构"><a href="#计算机架构" class="headerlink" title="计算机架构"></a>计算机架构</h2><ul>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/pervognsen/bitwise">按位</a> <code>video</code> <code>abandoned</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://emulator101.com/">模拟器 101</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://felixangell.com/blogs/virtual-machine-in-c">用 C 实现虚拟机</a></p>
-</li>
-<li><p>编写芯片 8 仿真器 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in-progress</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a target="_blank" rel="noopener" href="http://craigthomas.ca/blog/2014/06/21/writing-a-chip-8-emulator-part-1/">第1部分</a></li>
-<li><a target="_blank" rel="noopener" href="http://craigthomas.ca/blog/2014/07/17/writing-a-chip-8-emulator-part-2/">第2部分</a></li>
-<li><a target="_blank" rel="noopener" href="http://craigthomas.ca/blog/2015/02/19/writing-a-chip-8-emulator-draw-command-part-3/">第 3 部分</a></li>
-<li><a target="_blank" rel="noopener" href="http://craigthomas.ca/blog/2017/10/15/writing-a-chip-8-emulator-built-in-font-set-part-4/">第 4 部分</a></li>
-<li><a target="_blank" rel="noopener" href="http://craigthomas.ca/blog/2018/09/07/writing-a-chip-8-emulator-instruction-set-part-5/">第 5 部分</a></li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://cturt.github.io/cinoop.html">编写 Game Boy 模拟器</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://justinmeiners.github.io/lc3-vm/">编写自己的虚拟机</a></p>
-</li>
-</ul>
-<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><ul>
-<li><a target="_blank" rel="noopener" href="http://beej.us/guide/bgnet/html/multi/index.html">Beej 的网络编程指南</a> <code>book</code></li>
-<li><a target="_blank" rel="noopener" href="https://eli.thegreenplace.net/2017/concurrent-servers-part-1-introduction/">并发服务器</a></li>
-<li><a target="_blank" rel="noopener" href="https://medium.com/from-the-scratch/http-server-what-do-you-need-to-know-to-build-a-simple-http-server-from-scratch-d1ef8945e4fa">HTTP 服务器：从头开始构建一个简单的 HTTP 服务器需要知道的一切</a></li>
-<li>让我们编写一个 TCP/IP 堆栈<ul>
-<li><a target="_blank" rel="noopener" href="http://www.saminiir.com/lets-code-tcp-ip-stack-1-ethernet-arp/">第 1 部分：以太网和 ARP</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.saminiir.com/lets-code-tcp-ip-stack-2-ipv4-icmpv4/">第 2 部分：IPv4 和 ICMPv4</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.saminiir.com/lets-code-tcp-ip-stack-3-tcp-handshake/">第 3 部分：TCP 基础知识和握手</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.saminiir.com/lets-code-tcp-ip-stack-4-tcp-data-flow-socket-api/">第 4 部分：TCP 数据流和套接字 API</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.saminiir.com/lets-code-tcp-ip-stack-5-tcp-retransmission/">第 5 部分：TCP 重传</a></li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://lettier.github.io/posts/2016-04-26-lets-make-a-ntp-client-in-c.html">让我们用 C 语言创建一个 NTP 客户端</a></li>
-<li>从头开始编写 MQTT 代理<ul>
-<li><a target="_blank" rel="noopener" href="https://codepr.github.io/posts/sol-mqtt-broker">第 1 部分 - 协议</a></li>
-<li><a target="_blank" rel="noopener" href="https://codepr.github.io/posts/sol-mqtt-broker-p2">第 2 部分 - 网络</a></li>
-<li><a target="_blank" rel="noopener" href="https://codepr.github.io/posts/sol-mqtt-broker-p3">第 3 部分 - 服务器</a></li>
-<li><a target="_blank" rel="noopener" href="https://codepr.github.io/posts/sol-mqtt-broker-p4">第 4 部分 - 数据结构</a></li>
-<li><a target="_blank" rel="noopener" href="https://codepr.github.io/posts/sol-mqtt-broker-p5">第 5 部分 - 主题抽象</a></li>
-<li><a target="_blank" rel="noopener" href="https://codepr.github.io/posts/sol-mqtt-broker-p6">第 6 部分 - 处理程序</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://cstack.github.io/db_tutorial/">让我们建立一个简单的数据库</a></li>
-</ul>
-<h2 id="游戏开发"><a href="#游戏开发" class="headerlink" title="游戏开发"></a>游戏开发</h2><ul>
-<li><p><a target="_blank" rel="noopener" href="https://gtk.dashgl.com/?folder=Astroids">小行星克隆</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://gtk.dashgl.com/?folder=Brickout">分块克隆</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLZ1QII7yudbc-Ky058TEaOstZHVbT-2hg">C中的国际象棋引擎</a> <code>video</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLkTXsX7igf8edTYU92nU-f5Ntzuf-RKvW">用 C 编写数独求解器</a> <code>video</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLkTXsX7igf8erbWGYT4iSAhpnJLJ0Nk5G">用 C 编写 Rogue/Nethack RPG</a> <code>video</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.udemy.com/course/game-loop-c-sdl/">使用 C 和 SDL 创建游戏循环</a> <code>course</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.parallelrealities.co.uk/tutorials/#ppp">创建 2D 平台游戏</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.parallelrealities.co.uk/tutorials/#shooter">创建一个 2D 射击游戏</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.parallelrealities.co.uk/tutorials/#bad">创建一个 2D 自上而下的射击游戏</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://handmadehero.org/">手工英雄</a> <code>video</code> <code>in-progress</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLZ1QII7yudbd2ZHYSEWrSddsvD5PW_r5O">刽子手</a> <code>video</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://nesdoug.com/">如何用 C 编写 NES 游戏</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://helderman.github.io/htpataic/htpataic01.html">如何用 C 编写文本冒险</a> <code>in-progress</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://jborza.github.io/games/2020/07/12/solitaire-cli.html">用 C 语言实现纸牌</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://gtk.dashgl.com/?folder=Invaders">入侵者克隆</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLeEj4c2zF7PaFv5MPYhNAkBGrkx4iPGJo">学习如何开发自己的 GameBoy 游戏</a> <code>video</code> <code>in-progress</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLT6WFYYZE6uLMcPGS3qfpYm7T_gViYMMt">用 C 学习视频游戏编程</a> <code>video</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLSkJey49cOgTSj465v2KbLZ7LMn10bCF9">让我们做：危险的戴夫</a> <code>video</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PL7Ej6SUky1357r-Lqf_nogZWHssXP-hvH">从头开始用 C 语言制作游戏</a> <code>video</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLlaINRtydtNWuRfd4Ra3KeD6L9FP_tDE7">用 C 从头开始制作视频游戏</a> <code>video</code> <code>in-progress</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://brennan.io/2015/06/12/tetris-reimplementation/">关于俄罗斯方块和重新实现</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PL6Ikt4l3NbVjb7WR-eTgjOBMNCn7f3u7x">SDL 2 等距游戏教程</a> <code>video</code> <code>in-progress</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLZ1QII7yudbc7_ZgXA-gIXmME41Rs2GP5">C 中的简单井字游戏</a> <code>video</code></p>
-</li>
-<li><p>文字冒险 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">video</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in-progress</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a target="_blank" rel="noopener" href="https://youtu.be/J_Igbh0RH8c">第1集</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=7dYKhiruW1M">第 2 集</a></li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=gCVMkKgs3uQ">使用 SDL 用 C 语言编写的井字游戏</a> <code>video</code></p>
-</li>
-<li><p>电子游戏物理教程</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.toptal.com/game/video-game-physics-part-i-an-introduction-to-rigid-body-dynamics">第一部分：刚体动力学简介</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.toptal.com/game/video-game-physics-part-ii-collision-detection-for-solid-objects">第二部分：固体物体的碰撞检测</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.toptal.com/game/video-game-physics-part-iii-constrained-rigid-body-simulation">第三部分：约束刚体仿真</a></li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.hanshq.net/othello.html">用 C 从头开始编写黑白棋游戏</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.hanshq.net/fire.html">用汇编和 C 编写老派火效应和裸机编程</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=yFLa3ln16w0">使用 SDL 用 C 语言编写 2D 游戏</a> <code>video</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.reinterpretcast.com/writing-a-game-boy-advance-game">编写 Game Boy Advance 游戏</a></p>
-</li>
-</ul>
-<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><ul>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/jserv/mini-arm-os">从头开始为 ARM 构建一个最小的多任务操作系统内核</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/tokenrove/build-your-own-shell">构建你自己的外壳</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://jsandler18.github.io/">为 Raspberry Pi 构建操作系统</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://blog.holbertonschool.com/hack-virtual-memory-stack-registers-assembly-code/">破解虚拟内存</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/cfenollosa/os-tutorial">如何从头开始创建操作系统</a> <code>in-progress</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://david942j.blogspot.com/2018/10/note-learning-kvm-implement-your-own.html">学习 KVM - 实现你自己的内核</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/s-matyukevich/raspberry-pi-os">使用Linux内核和树莓派学习操作系统开发</a> <code>in-progress</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/kamalmarhubi/shell-workshop">让我们构建一个shell！</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://danluu.com/malloc-tutorial/">让我们写一个 Malloc</a></p>
-</li>
-<li><p>让我们写一个内核</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://arjunsreedharan.org/post/82710718100/kernel-101-lets-write-a-kernel">第 1 部分 - 内核 101</a></li>
-<li><a target="_blank" rel="noopener" href="https://arjunsreedharan.org/post/99370248137/kernel-201-lets-write-a-kernel-with-keyboard">第 2 部分 - 内核 201</a></li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://blog.lizzie.io/linux-containers-in-500-loc.html">500 行代码的 Linux 容器</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://medium.com/@lduck11007/operating-systems-development-for-dummies-3d4d786e8ac">Dummies的操作系统开发</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://tuhdo.github.io/os01/">操作系统：从 0 到 1</a> <code>book</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.ops-class.org/">OS161：了解操作系统所需的一切</a> <code>course</code></p>
-</li>
-<li><p>重写 BSD 4.4 Shell 命令： </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">video</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=MCuzvy79WWQ">猫</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=p7uJBl4A_BA">修改</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=69CYF7nJKj8">回声</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=t96qYd4OUBM">目录</a></li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://www.jamesmolloy.co.uk/tutorial_html/">推出您自己的玩具 UNIX 克隆操作系统</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://littleosbook.github.io/">关于操作系统开发的小书</a> <code>book</code></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://brennan.io/2015/01/16/write-a-shell-in-c/">用 C 写一个 Shell</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://arjunsreedharan.org/post/148675821737/write-a-simple-memory-allocator">编写一个简单的内存分配器</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://brennan.io/2016/11/14/kernel-dev-ep3/">编写系统调用</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.cs.nmsu.edu/~pfeiffer/fuse-tutorial/">编写 FUSE 文件系统</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://danishprakash.github.io/2018/01/15/write-a-shell.html">用 C 写一个 shell</a></p>
-</li>
-<li><p>编写 Unix Shell</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://indradhanush.github.io/blog/writing-a-unix-shell-part-1">第1部分</a></li>
-<li><a target="_blank" rel="noopener" href="https://indradhanush.github.io/blog/writing-a-unix-shell-part-2">第2部分</a></li>
-<li><a target="_blank" rel="noopener" href="https://indradhanush.github.io/blog/writing-a-unix-shell-part-3">第 3 部分</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="编程语言"><a href="#编程语言" class="headerlink" title="编程语言"></a>编程语言</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/DoctorWkt/acwj">编译器写作之旅</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cs.princeton.edu/courses/archive/spr09/cos333/beautiful.html">正则表达式匹配器</a></li>
-<li><a target="_blank" rel="noopener" href="https://swtch.com/~rsc/regexp/regexp1.html">正则表达式匹配既简单又快速</a></li>
-<li><a target="_blank" rel="noopener" href="http://journal.stuffwithstuff.com/2013/12/08/babys-first-garbage-collector/">宝宝的第一个垃圾收集器</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.buildyourownlisp.com/">构建你自己的 Lisp</a> <code>book</code></li>
-<li><a target="_blank" rel="noopener" href="https://holub.com/goodies/compiler/compilerDesignInC.pdf">C 编译器设计</a> <code>book</code></li>
-<li><a target="_blank" rel="noopener" href="http://www.craftinginterpreters.com/">制作口译员</a> <code>book</code> <em>第 14-30 章</em></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/Let-s-build-a-compiler">让我们构建一个编译器：AC &amp; x86 版本</a></li>
-<li>编写 C 解释器<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/0-Preface.md">第 0 部分 - 前言</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/1-Skeleton.md">第 1 部分 - 骨架</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/2-Virtual-Machine.md">第 2 部分 - 虚拟机</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/3-Lexer.md">第 3 部分 - 词法分析器</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/4-Top-down-Parsing.md">第 4 部分 - 自顶向下的解析</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/5-Variables.md">第 5 部分 - 变量</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/6-Functions.md">第 6 部分 - 函数</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/7-Statements.md">第 7 部分 - 声明</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/8-Expressions.md">第 8 部分 - 表达式</a></li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="http://maplant.com/gc.html">用 C 编写一个简单的垃圾收集器</a></li>
-<li>从头开始的计划<ul>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-introduction">第 1 部分 - 介绍</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_1-integers">第 2 部分 - 整数</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_2-booleans">第 3 部分 - 布尔值</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_3-characters">第 4 部分 - 字符</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_4-strings">第 5 部分 - 字符串</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_5-the-empty-list">第 6 部分 - 空列表</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_6-pairs">第 7 部分 - 对</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_7-symbols">第 8 部分 - 符号</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_8-quote">第 9 部分 - 报价</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_9-environments">第 10 部分 - 环境</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_10-if">第 11 部分 - 如果</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_11-primitive-procedures-part-1">第 12 部分 - 原始程序第 1 部分</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_12-primitive-procedures-part-2">第 13 部分 - 原始程序第 2 部分</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_13-lambda-the-ultimate">第 14 部分 - 终极版 Lambda</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_14-begin">第 15 部分 - 开始</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_15-cond">第 16 部分 - 条件</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_16-let">第 17 部分 - 让</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_17-and-and-or">第 18 部分 - 和和或</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_18-apply">第 19 部分 - 申请</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_19-eval">第 20 部分 - 评估</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_20-io">第 21 部分 - I/O</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_21-standard-library">第 22 部分 - 标准库</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_22-garbage-collection">第 23 部分 - 垃圾收集</a></li>
-<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-conclusion">第 24 部分 - 结论</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="未分类"><a href="#未分类" class="headerlink" title="未分类"></a>未分类</h2><ul>
-<li>C 语言中的虚拟区块链实现<ul>
-<li><a target="_blank" rel="noopener" href="https://myram.xyz/c-blockchain-implementation-1/">第1部分</a></li>
-<li><a target="_blank" rel="noopener" href="https://myram.xyz/c-blockchain-implementation-2/">第2部分</a></li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://viewsourcecode.org/snaptoken/kilo/">构建您自己的文本编辑器</a></li>
-<li><a target="_blank" rel="noopener" href="http://dranger.com/ffmpeg/ffmpeg.html">如何编写少于 1000 行的视频播放器</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/leandromoreira/ffmpeg-libav-tutorial">艰难地学习 FFmpeg libav</a> <code>in-progress</code></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/jamesroutley/write-a-hash-table">用C写一个哈希表</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.hanshq.net/bigint.html">用 C 编写 BigInt 计算器</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.hanshq.net/zip.html">用 C 从头开始编写你自己的 Zip</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.codedrome.com/svg-library-in-c/">编写 SVG 库</a></li>
-</ul>
-<h3 id="Tinyhttpd"><a href="#Tinyhttpd" class="headerlink" title="Tinyhttpd"></a>Tinyhttpd</h3><p>介绍：tinyhttpd 是一个不到 500 行的超轻量型 Http Server，非常适合学习服务器工作原理</p>
-<p>源码分析：<a target="_blank" rel="noopener" href="http://blog.csdn.net/programvae/article/details/71036295">在此</a></p>
-<p>链接：<a target="_blank" rel="noopener" href="https://github.com/yangtingcheng/tinyhttpd">tinyhttpd</a></p>
-<h3 id="MemoryPool"><a href="#MemoryPool" class="headerlink" title="MemoryPool"></a>MemoryPool</h3><p>介绍：一个用 C++ 实现的简单内存池</p>
-<p>源码分析：<a target="_blank" rel="noopener" href="http://blog.csdn.net/jcjc918/article/details/44997089">在此</a></p>
-<p>链接：<a target="_blank" rel="noopener" href="https://github.com/AngryHacker/code-with-comments/tree/master/memorypool/C-98">MemoryPool(98 版本)</a></p>
-<h3 id="Webbench"><a href="#Webbench" class="headerlink" title="Webbench"></a>Webbench</h3><p>介绍：Webbench是一个在linux下使用的非常简单的网站压测工具。它使用fork()模拟多个客户端同时访问我们设定的URL， 测试网站在压力下工作的性能，最多可以模拟3万个并发连接去测试网站的负载能力。</p>
-<p>源码分析：<a target="_blank" rel="noopener" href="http://blog.csdn.net/jcjc918/article/details/44965951">在此</a></p>
-<p>链接：<a target="_blank" rel="noopener" href="https://github.com/AngryHacker/code-with-comments/tree/master/webbench">webbench</a></p>
-<h3 id="Threadpool"><a href="#Threadpool" class="headerlink" title="Threadpool"></a>Threadpool</h3><p>介绍：基于 pthread 实现的简单线程池</p>
-<p>源码分析：<a target="_blank" rel="noopener" href="http://blog.csdn.net/jcjc918/article/details/50395528">在此</a></p>
-<p>链接：<a target="_blank" rel="noopener" href="https://github.com/AngryHacker/code-with-comments/tree/master/threadpool">Threadpool</a></p>
-<h3 id="Leveldb"><a href="#Leveldb" class="headerlink" title="Leveldb"></a>Leveldb</h3><p>介绍：Jeff Dean 和 Sanjay Ghemawat 两位超级大神实现的高效 kv 数据库。</p>
-<p>源码分析：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/haippy/archive/2011/12/04/2276064.html">LevelDb 日知录</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/AngryHacker/code-with-comments/blob/master/attachment/leveldb%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90.pdf">leveldb 实现解析 - 那岩</a></li>
-</ul>
-<p>以上是我觉得分析得最好的两篇。不过随着 leveldb 项目的推进，有些代码也发生了变动。我进行注释的源码是最新的 1.18 版本，结合两篇解析写自己的理解，目前已阅读的是主要流程，水平有限，有些地方也不甚清楚，欢迎交流。</p>
-<p>链接：<a target="_blank" rel="noopener" href="https://github.com/AngryHacker/code-with-comments/tree/master/leveldb">Leveldb</a></p>
-<h2 id="第8086章-贪吃蛇"><a href="#第8086章-贪吃蛇" class="headerlink" title="第8086章 贪吃蛇"></a>第8086章 贪吃蛇</h2><p>时间：2016-12</p>
-<p>介绍：<a target="_blank" rel="noopener" href="https://blog.csdn.net/to_be_better/article/details/53512913">https://blog.csdn.net/to_be_better/article/details/53512913</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/shiyicode/project/blob/master/readme-images/20161208122620511.gif"><img src="https://github.com/shiyicode/project/raw/master/readme-images/20161208122620511.gif" alt="img"></a></p>
-<h2 id="步步为营-墙棋AI人机对战-Android"><a href="#步步为营-墙棋AI人机对战-Android" class="headerlink" title="步步为营-墙棋AI人机对战(Android)"></a>步步为营-墙棋AI人机对战(Android)</h2><p>时间：2016-08</p>
-<p>介绍：<a target="_blank" rel="noopener" href="https://shiyi.blog.csdn.net/article/details/52088396">https://shiyi.blog.csdn.net/article/details/52088396</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/shiyicode/project/blob/master/readme-images/20160801191336969.png"><img src="https://github.com/shiyicode/project/raw/master/readme-images/20160801191336969.png" alt="img"></a></p>
-<h2 id="C-QT-俄罗斯对话框"><a href="#C-QT-俄罗斯对话框" class="headerlink" title="C++/QT 俄罗斯对话框"></a>C++/QT 俄罗斯对话框</h2><p>时间：2016-04</p>
-<p>介绍：<a target="_blank" rel="noopener" href="https://shiyi.blog.csdn.net/article/details/51055813">https://shiyi.blog.csdn.net/article/details/51055813</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/shiyicode/project/blob/master/readme-images/20160404104940464.png"><img src="https://github.com/shiyicode/project/raw/master/readme-images/20160404104940464.png" alt="img"></a></p>
-<h2 id="C-QT贪吃蛇"><a href="#C-QT贪吃蛇" class="headerlink" title="C++/QT贪吃蛇"></a>C++/QT贪吃蛇</h2><p>时间：2016-04</p>
-<p>介绍：<a target="_blank" rel="noopener" href="https://shiyi.blog.csdn.net/article/details/51058164">https://shiyi.blog.csdn.net/article/details/51058164</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/shiyicode/project/blob/master/readme-images/20160404183256409.png"><img src="https://github.com/shiyicode/project/raw/master/readme-images/20160404183256409.png" alt="img"></a></p>
-<h2 id="五子棋AI图形界面人机对战（JAVA实现）"><a href="#五子棋AI图形界面人机对战（JAVA实现）" class="headerlink" title="五子棋AI图形界面人机对战（JAVA实现）"></a>五子棋AI图形界面人机对战（JAVA实现）</h2><p>时间：2016-03</p>
-<p>介绍：<a target="_blank" rel="noopener" href="https://shiyi.blog.csdn.net/article/details/50913168">https://shiyi.blog.csdn.net/article/details/50913168</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/shiyicode/project/blob/master/readme-images/20160317135042608.png"><img src="https://github.com/shiyicode/project/raw/master/readme-images/20160317135042608.png" alt="img"></a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/22/c++projects/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -814,7 +393,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-09-22 00:00:10 / 修改时间：00:01:21" itemprop="dateCreated datePublished" datetime="2021-09-22T00:00:10+08:00">2021-09-22</time>
+              <time title="创建时间：2021-09-22 00:00:10 / 修改时间：00:16:19" itemprop="dateCreated datePublished" datetime="2021-09-22T00:00:10+08:00">2021-09-22</time>
             </span>
 
           <br>
@@ -842,8 +421,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>[TOC]</p>
-<h1 id="C-C-代码调试的艺术"><a href="#C-C-代码调试的艺术" class="headerlink" title="C/C++代码调试的艺术"></a>C/C++代码调试的艺术</h1><h2 id="VC"><a href="#VC" class="headerlink" title="VC"></a>VC</h2><h3 id="1、断点管理"><a href="#1、断点管理" class="headerlink" title="1、断点管理"></a>1、断点管理</h3><ol>
+          <h1 id="C-C-代码调试的艺术"><a href="#C-C-代码调试的艺术" class="headerlink" title="C/C++代码调试的艺术"></a>C/C++代码调试的艺术</h1><h2 id="VC"><a href="#VC" class="headerlink" title="VC"></a>VC</h2><h3 id="1、断点管理"><a href="#1、断点管理" class="headerlink" title="1、断点管理"></a>1、断点管理</h3><ol>
 <li>设置、删除断点</li>
 <li>禁用断点</li>
 <li>查看断点</li>
@@ -853,233 +431,15 @@
 <li>将字符串拖入或者输入字符串可查看内存布局</li>
 <li>宽字符（UNICODE编码）：每个字符占2个字节。 UTF-8中文字符3个字节，英文1个字节</li>
 </ul>
-<h4 id="2、整型变量内存布局"><a href="#2、整型变量内存布局" class="headerlink" title="2、整型变量内存布局"></a>2、整型变量内存布局</h4><ul>
-<li>整型变量内存布局涉及字节序。</li>
-<li>PowerPC系列采用大端存储方式， X86方式采用小端存储方式。</li>
-</ul>
-<h4 id="3-调试执行"><a href="#3-调试执行" class="headerlink" title="3.调试执行"></a>3.调试执行</h4><ul>
-<li>启动调试     <strong>F5</strong></li>
-<li>逐语句执行   <strong>F11</strong>  （进入函数）</li>
-<li>逐过程执行   <strong>F10</strong>  （不进入函数）</li>
-<li>跳出执行   <strong>Shift+F11</strong></li>
-<li>运行到光标处   <strong>Ctrl+F10</strong></li>
-<li>多次执行代码 ：移动执行指针 （1、不要移动到函数外； 2、不要跳过重要的初始化操作语句；） </li>
-</ul>
-<p><strong>调试–&gt;窗口–&gt;内存</strong></p>
-<h3 id="3、监视"><a href="#3、监视" class="headerlink" title="3、监视"></a>3、监视</h3><h4 id="1、快速监视"><a href="#1、快速监视" class="headerlink" title="1、快速监视"></a>1、快速监视</h4><p>​         shift+F9</p>
-<h4 id="2、监视窗口"><a href="#2、监视窗口" class="headerlink" title="2、监视窗口"></a>2、监视窗口</h4><h4 id="3、表达式"><a href="#3、表达式" class="headerlink" title="3、表达式"></a>3、表达式</h4><ol>
-<li>内部函数<ol>
-<li>字符串长度</li>
-<li>字符串比较</li>
-<li>字符串查找</li>
-<li>Win32 API    （CoDecodeProxy ,DecodePointer, GetLastError, TlsGetValue)</li>
-<li>Win 8 特有</li>
-<li>其他 (VC特有)</li>
-</ol>
-</li>
-<li>不支持的表达式<ol>
-<li>构造函数、析构函数、类型转换</li>
-<li>预处理宏</li>
-<li>不能使用using namespace声明，必须使用完全限定的名称</li>
-</ol>
-</li>
-</ol>
-<h3 id="4、即时窗口"><a href="#4、即时窗口" class="headerlink" title="4、即时窗口"></a>4、即时窗口</h3><h3 id="5、调用堆栈"><a href="#5、调用堆栈" class="headerlink" title="5、调用堆栈"></a>5、调用堆栈</h3><h4 id="1、调用堆栈信息"><a href="#1、调用堆栈信息" class="headerlink" title="1、调用堆栈信息"></a>1、调用堆栈信息</h4><h4 id="2、设置符号信息"><a href="#2、设置符号信息" class="headerlink" title="2、设置符号信息"></a>2、设置符号信息</h4><ol>
-<li>调用堆栈—&gt;右键单击xxx.dll,选择符号设置</li>
-<li>选择符号服务器，设置cache文件夹</li>
-<li>加载符号</li>
-<li>显示外部代码</li>
-<li>可以使用 Dependency  Walker打开xxx.dll</li>
-</ol>
-<p><img src="C++%E8%B0%83%E8%AF%95.assets/image-20210912160414724.png" alt="image-20210912160414724"></p>
-<h3 id="6、多线程管理"><a href="#6、多线程管理" class="headerlink" title="6、多线程管理"></a>6、多线程管理</h3><h4 id="1、创建多线程"><a href="#1、创建多线程" class="headerlink" title="1、创建多线程"></a>1、创建多线程</h4><h4 id="2、调试多线程"><a href="#2、调试多线程" class="headerlink" title="2、调试多线程"></a>2、调试多线程</h4><ol>
-<li>并行监视（Ctrl + shift + D, 1)</li>
-<li>并行堆栈（Ctrl + shift + D, S)</li>
-<li>显示线程：调试工具栏—&gt;显示线程</li>
-</ol>
-<h3 id="7、错误码"><a href="#7、错误码" class="headerlink" title="7、错误码"></a>7、错误码</h3><ol>
-<li><p>获取：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">GetLastError</span>()</span><br></pre></td></tr></table></figure></li>
-<li><p>获取错误信息</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">FormatMessage</span>()</span><br></pre></td></tr></table></figure></li>
-<li><p>监视窗口中使用获取函数获取错误码</p>
-</li>
-<li><p>监视窗口使用 <strong>err,hr</strong>查看错误码和错误信息</p>
-</li>
-</ol>
-<h3 id="8、调试宏Assert"><a href="#8、调试宏Assert" class="headerlink" title="8、调试宏Assert"></a>8、调试宏Assert</h3><p><strong>只在调试版中有用</strong>。</p>
-<p>注意事项：</p>
-<ul>
-<li>不要在表达式中使用函数调用</li>
-<li>不要在表达式中进行变量赋值</li>
-<li>不要再表达式中修改</li>
-<li>不要使用有副作用的表达式</li>
-</ul>
-<h3 id="9、其他"><a href="#9、其他" class="headerlink" title="9、其他"></a>9、其他</h3><ul>
-<li>字符串可视化工具</li>
-<li>条件断点（断点处右键）</li>
-<li>函数断点 （Ctrl+K，B）</li>
-<li>数据断点 </li>
-<li>常用快捷键和组合键</li>
-</ul>
-<hr>
-<h2 id="Linux-gdb调试"><a href="#Linux-gdb调试" class="headerlink" title="Linux  gdb调试"></a>Linux  gdb调试</h2><h3 id="1、调试执行"><a href="#1、调试执行" class="headerlink" title="1、调试执行"></a>1、调试执行</h3><h4 id="1、启动调试"><a href="#1、启动调试" class="headerlink" title="1、启动调试"></a>1、启动调试</h4><ul>
-<li><code>gdb 程序名</code></li>
-<li>q 退出调试</li>
-</ul>
-<h4 id="2、启动并添加参数"><a href="#2、启动并添加参数" class="headerlink" title="2、启动并添加参数"></a>2、启动并添加参数</h4><ul>
-<li>gdb中输入 <code>set args  参数...</code></li>
-</ul>
-<h4 id="3、附加到进程"><a href="#3、附加到进程" class="headerlink" title="3、附加到进程"></a>3、附加到进程</h4><ul>
-<li><p><code>gdb attach pid</code></p>
-</li>
-<li><p>获取pid    <code>ps aux | grep 程序名</code></p>
-</li>
-</ul>
-<h3 id="2、断点管理"><a href="#2、断点管理" class="headerlink" title="2、断点管理"></a>2、断点管理</h3><ul>
-<li><h4 id="设置-（break-or-b-（rb-or-rbreak-正则表达式断点）（tb-or-tbreak-临时断点）"><a href="#设置-（break-or-b-（rb-or-rbreak-正则表达式断点）（tb-or-tbreak-临时断点）" class="headerlink" title="设置    （break or b)（rb or rbreak 正则表达式断点）（tb or tbreak  临时断点）"></a>设置    （break or b)（rb or rbreak 正则表达式断点）（tb or tbreak  临时断点）</h4><ul>
-<li>break 文件名：行号</li>
-<li>break 函数名</li>
-<li>rb 正则表达式  </li>
-<li>b  +/- 偏移量</li>
-<li>b 断点 条件</li>
-<li>b *  指令地址</li>
-<li>tb 断点</li>
-</ul>
-</li>
-<li><h4 id="启用-禁用"><a href="#启用-禁用" class="headerlink" title="启用/禁用"></a>启用/禁用</h4><ul>
-<li>disable  断点编号</li>
-<li>enable   断点编号</li>
-<li>enable  once  断点编号</li>
-<li>enable delete  断点编号</li>
-<li>enable count 数量 断点编号</li>
-<li>ignore 断点编号 次数</li>
-</ul>
-</li>
-<li><h4 id="查看断点"><a href="#查看断点" class="headerlink" title="查看断点"></a>查看断点</h4><ul>
-<li>info / i     breakpoints / break / b</li>
-</ul>
-</li>
-<li><h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><ul>
-<li>delete 断点编号或范围</li>
-<li>clear 函数名</li>
-<li>clear 行号</li>
-</ul>
-</li>
-<li><h4 id="启动程序"><a href="#启动程序" class="headerlink" title="启动程序"></a>启动程序</h4><ul>
-<li>run  / r</li>
-</ul>
-</li>
-<li><h4 id="继续运行"><a href="#继续运行" class="headerlink" title="继续运行"></a>继续运行</h4><ul>
-<li>continue / c</li>
-<li>continue  次数</li>
-<li>finish   继续运行至当前函数执行完成</li>
-</ul>
-</li>
-<li><h4 id="单步执行"><a href="#单步执行" class="headerlink" title="单步执行"></a>单步执行</h4><ul>
-<li>step  / s</li>
-</ul>
-</li>
-<li><h4 id="逐过程"><a href="#逐过程" class="headerlink" title="逐过程"></a>逐过程</h4><ul>
-<li>next / n</li>
-</ul>
-</li>
-<li><h4 id="查看函数参数"><a href="#查看函数参数" class="headerlink" title="查看函数参数"></a>查看函数参数</h4><ul>
-<li>info / i   args</li>
-</ul>
-</li>
-<li><h4 id="查看-修改变量"><a href="#查看-修改变量" class="headerlink" title="查看/修改变量"></a>查看/修改变量</h4><ul>
-<li>print / p 变量名</li>
-<li>可使用gdb内嵌函数</li>
-<li>p   *指针</li>
-<li>set print null-stop （删除空字符）遇到结束字符停止显示</li>
-<li>set print pretty(漂亮) </li>
-<li>set print array on   查看数组</li>
-</ul>
-</li>
-<li><h4 id="自动显示"><a href="#自动显示" class="headerlink" title="自动显示"></a>自动显示</h4><ul>
-<li>display 变量名</li>
-<li>undisplay    ***</li>
-<li>delete display  numID</li>
-<li>disable  display  numID</li>
-<li>enable  display  numID</li>
-</ul>
-</li>
-<li><h4 id="显示源码"><a href="#显示源码" class="headerlink" title="显示源码"></a>显示源码</h4><ul>
-<li>list  / l  ***</li>
-<li>set listsize  num</li>
-</ul>
-</li>
-</ul>
-<h3 id="3、查看内存"><a href="#3、查看内存" class="headerlink" title="3、查看内存"></a>3、查看内存</h3><p> <code>x  /选项  地址</code></p>
-<h3 id="4、线程管理"><a href="#4、线程管理" class="headerlink" title="4、线程管理"></a>4、线程管理</h3><ul>
-<li>info thread</li>
-<li>thread    ID</li>
-<li>b 断点 thread 线程ID</li>
-<li>thread apply  线程号  命令</li>
-</ul>
-<h3 id="5、其它"><a href="#5、其它" class="headerlink" title="5、其它"></a>5、其它</h3><hr>
-<h2 id="多线程死锁调试"><a href="#多线程死锁调试" class="headerlink" title="多线程死锁调试"></a>多线程死锁调试</h2><h3 id="1、多线程创建"><a href="#1、多线程创建" class="headerlink" title="1、多线程创建"></a>1、多线程创建</h3><h3 id="2、线程同步"><a href="#2、线程同步" class="headerlink" title="2、线程同步"></a>2、线程同步</h3><h3 id="3、锁"><a href="#3、锁" class="headerlink" title="3、锁"></a>3、锁</h3><h3 id="4、死锁调试"><a href="#4、死锁调试" class="headerlink" title="4、死锁调试"></a>4、死锁调试</h3><ul>
-<li>VC：调试—线程</li>
-<li>gdb： Ctrl+C  —bt — f ID — info threads  </li>
-</ul>
-<h3 id="5、死锁条件"><a href="#5、死锁条件" class="headerlink" title="5、死锁条件"></a>5、死锁条件</h3><h3 id="6、解决死锁"><a href="#6、解决死锁" class="headerlink" title="6、解决死锁"></a>6、解决死锁</h3><ul>
-<li>顺序使用锁</li>
-<li>控制锁的作用域</li>
-<li>超时机制</li>
-<li>RAII机制</li>
-</ul>
-<hr>
-<h2 id="动态库调试"><a href="#动态库调试" class="headerlink" title="动态库调试"></a>动态库调试</h2><h3 id="1、动态库创建"><a href="#1、动态库创建" class="headerlink" title="1、动态库创建"></a>1、动态库创建</h3><h3 id="2、动态库使用"><a href="#2、动态库使用" class="headerlink" title="2、动态库使用"></a>2、动态库使用</h3><ul>
-<li>隐式链接  <code>pragma commen （lib，“***”）</code></li>
-<li>vc 链接属性 附加依赖项</li>
-<li>显示联接使用</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">LoadLibrary</span>(<span class="string">&quot;***.dll&quot;</span>);</span><br><span class="line"><span class="built_in">GetProcAddress</span>();</span><br><span class="line"><span class="built_in">FreeLibrary</span>();</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="内存检查"><a href="#内存检查" class="headerlink" title="内存检查"></a>内存检查</h2><h3 id="1、VC"><a href="#1、VC" class="headerlink" title="1、VC"></a>1、VC</h3><h4 id="1、内存泄露报告"><a href="#1、内存泄露报告" class="headerlink" title="1、内存泄露报告"></a>1、内存泄露报告</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> _CrtSetDbgFlag(<span class="keyword">int</span> newFlag);</span><br></pre></td></tr></table></figure>
-
-<h4 id="2、定位泄露位置"><a href="#2、定位泄露位置" class="headerlink" title="2、定位泄露位置"></a>2、定位泄露位置</h4><ul>
-<li><p>重载 new和malloc</p>
-</li>
-<li><p>```c++<br>#ifdef _DEBUG<br>#define new new(_NORMAL_BLOCK,<strong>FILE</strong>,<strong>LINE</strong>)<br>#define malloc(s) malloc(s,_NORMAL_BLOCK,<strong>FILE</strong>,<strong>LINE</strong>)<br>#endif</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 3、分配内存时设置断点</span><br><span class="line"></span><br><span class="line">```c++</span><br><span class="line"> _CrtSetBreakAlloc(_In_ long _NewValue );</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="2、gdb"><a href="#2、gdb" class="headerlink" title="2、gdb"></a>2、gdb</h3><p><code>g++ -fsanitize=address -g </code></p>
-<hr>
-<h2 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h2><h3 id="gdb"><a href="#gdb" class="headerlink" title="gdb"></a>gdb</h3><ul>
-<li>安装gdbserver</li>
-<li>配置防火墙</li>
-<li>复制测试程序</li>
-</ul>
-<hr>
-<h2 id="转储文件调试"><a href="#转储文件调试" class="headerlink" title="转储文件调试"></a>转储文件调试</h2><h2 id="发行（release）版调试"><a href="#发行（release）版调试" class="headerlink" title="发行（release）版调试"></a>发行（release）版调试</h2><h3 id="gdb-1"><a href="#gdb-1" class="headerlink" title="gdb"></a>gdb</h3><ul>
-<li>从调试版中提取调试符号<ul>
-<li>生成调试符号表： <code>objcopy --only-keep-debug   程序名    ***.symbol</code></li>
-<li>加上调试符号调试发行版： <code>gdb --symbol=***.symbol -exec=***_release</code></li>
-</ul>
-</li>
-<li>直接使用调试版作为符号源<ul>
-<li><code>gdb --symbol=*** -exec=***_release</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="高级话题"><a href="#高级话题" class="headerlink" title="高级话题"></a>高级话题</h2><h3 id="1、断点"><a href="#1、断点" class="headerlink" title="1、断点"></a>1、断点</h3><p>vc编译器内嵌了很多调试函数，其中一个为</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> __debugbreak();</span><br></pre></td></tr></table></figure>
-
-<p>该函数在代码中设置一个断点，在调试器中相当于一个断点。</p>
-<p>在反汇编界面，可以看到：</p>
-<p>__debugbreak()对应汇编指令  int 3</p>
-<p>在程序中嵌入汇编代码</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::cout&lt;&lt;<span class="string">&quot;hello\n&quot;</span>;</span><br><span class="line">    __asm &#123;</span><br><span class="line">       <span class="keyword">int</span>  <span class="number">3</span>；</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>该程序效果与上述函数相同。</p>
-<p><code>int 3</code>是CPU专门用于调试的一条指令，当CPU执行该指令时，就会中断到调试器。</p>
-<h3 id="2、你好，烫"><a href="#2、你好，烫" class="headerlink" title="2、你好，烫"></a>2、你好，烫</h3><p>“烫”的编码为0xcccc。在VC调试版中对未初始化字符串数组会使用0xcc进行填充。</p>
-<p>int 3 对应的机器码为0xcc。</p>
-<h3 id="3、Windows调试相关API"><a href="#3、Windows调试相关API" class="headerlink" title="3、Windows调试相关API"></a>3、Windows调试相关API</h3><hr>
-<h2 id="调试拓展：驱动调试"><a href="#调试拓展：驱动调试" class="headerlink" title="调试拓展：驱动调试"></a>调试拓展：驱动调试</h2>
+<h4 id="2、整型变量内存布局"><a href="#2、整型变量内存布局" class="headerlink" title="2、整型变量内存布局"></a>2、整型变量内存布局</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/22/C++%E8%B0%83%E8%AF%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
