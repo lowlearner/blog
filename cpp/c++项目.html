@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"cpp123.xyz","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="[Toc] C++项目C&#x2F;C++ 文字 Build Your Own Lisp Build Your Own Text Editor Concurrent Servers Digital sound and music Kernels 101 – Let’s write a Kernel Let’s code a TCP&#x2F;IP stack Operating Systems: From 0 to">
+<meta property="og:type" content="website">
+<meta property="og:title" content="小书屋">
+<meta property="og:url" content="http://cpp123.xyz/cpp/c++%E9%A1%B9%E7%9B%AE.html">
+<meta property="og:site_name" content="小书屋">
+<meta property="og:description" content="[Toc] C++项目C&#x2F;C++ 文字 Build Your Own Lisp Build Your Own Text Editor Concurrent Servers Digital sound and music Kernels 101 – Let’s write a Kernel Let’s code a TCP&#x2F;IP stack Operating Systems: From 0 to">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/shiyicode/project/raw/master/readme-images/20161208122620511.gif">
+<meta property="og:image" content="https://github.com/shiyicode/project/raw/master/readme-images/20160801191336969.png">
+<meta property="og:image" content="https://github.com/shiyicode/project/raw/master/readme-images/20160404104940464.png">
+<meta property="og:image" content="https://github.com/shiyicode/project/raw/master/readme-images/20160404183256409.png">
+<meta property="og:image" content="https://github.com/shiyicode/project/raw/master/readme-images/20160317135042608.png">
+<meta property="article:published_time" content="2021-09-15T00:46:11.854Z">
+<meta property="article:modified_time" content="2021-06-30T05:15:21.091Z">
+<meta property="article:author" content="mk">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/shiyicode/project/raw/master/readme-images/20161208122620511.gif">
+
+<link rel="canonical" href="http://cpp123.xyz/cpp/c++%E9%A1%B9%E7%9B%AE">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | 小书屋
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小书屋</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/lowlearner" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <p>[Toc]</p>
+<h1 id="C-项目"><a href="#C-项目" class="headerlink" title="C++项目"></a>C++项目</h1><h3 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h3><ul>
+<li>文字<ul>
+<li><a target="_blank" rel="noopener" href="http://www.buildyourownlisp.com/">Build Your Own Lisp</a></li>
+<li><a target="_blank" rel="noopener" href="https://viewsourcecode.org/snaptoken/kilo/">Build Your Own Text Editor</a></li>
+<li><a target="_blank" rel="noopener" href="https://eli.thegreenplace.net/2017/concurrent-servers-part-1-introduction/">Concurrent Servers</a></li>
+<li><a target="_blank" rel="noopener" href="http://digitalsoundandmusic.com/chapters/ch5/5-3/">Digital sound and music</a></li>
+<li><a target="_blank" rel="noopener" href="https://arjunsreedharan.org/post/82710718100/kernels-101-lets-write-a-kernel">Kernels 101 – Let’s write a Kernel</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.saminiir.com/lets-code-tcp-ip-stack-1-ethernet-arp">Let’s code a TCP/IP stack</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tuhdo/os01">Operating Systems: From 0 to 1</a></li>
+<li><a target="_blank" rel="noopener" href="https://norasandler.com/2017/11/29/Write-a-Compiler.html">Writing a C Compiler</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.tartanllama.xyz/writing-a-linux-debugger-setup/">Writing a Linux Debugger</a></li>
+<li><a target="_blank" rel="noopener" href="http://users.cs.cf.ac.uk/Dave.Marshall/C/node33.html#SECTION003310000000000000000">Write a RPC framework</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000007408126">实现一个简单的编译器</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.shiyanlou.com/courses/1105">用 C 编写打字练习软件</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.shiyanlou.com/courses/670">用 C 语言编写自己的编程语言</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.shiyanlou.com/courses/231">缓冲区溢出漏洞实验</a></li>
+</ul>
+</li>
+<li>视频<ul>
+<li><a target="_blank" rel="noopener" href="https://www.udemy.com/course/learn-c-game-development/">Learn C++ Game Development</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.shiyanlou.com/courses/1218">C++ 解决迷宫问题</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.shiyanlou.com/courses/1182">C++ 使用 openGL 实现吃豆人游戏</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av62785783">C++ 项目实战</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av7126182">牛 B 闪闪坦克大战</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av67260826">微信飞机大战</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av65016216">小游戏完整项目制作</a></li>
+</ul>
+</li>
+</ul>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h1 id="C-中基于项目的教程"><a href="#C-中基于项目的教程" class="headerlink" title="C 中基于项目的教程"></a>C 中基于项目的教程</h1><p>致力于用 C 制作小型到大型项目的教程列表。</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/rby90/project-based-tutorials-in-c#computer-architecture">计算机架构</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rby90/project-based-tutorials-in-c#computer-networking">计算机网络</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rby90/project-based-tutorials-in-c#databases">数据库</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rby90/project-based-tutorials-in-c#game-development">游戏开发</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rby90/project-based-tutorials-in-c#operating-systems">操作系统</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rby90/project-based-tutorials-in-c#programming-languages">编程语言</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rby90/project-based-tutorials-in-c#uncategorized">未分类</a></li>
+</ul>
+<h2 id="计算机架构"><a href="#计算机架构" class="headerlink" title="计算机架构"></a>计算机架构</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/pervognsen/bitwise">按位</a> <code>video</code> <code>abandoned</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://emulator101.com/">模拟器 101</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://felixangell.com/blogs/virtual-machine-in-c">用 C 实现虚拟机</a></p>
+</li>
+<li><p>编写芯片 8 仿真器 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in-progress</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="http://craigthomas.ca/blog/2014/06/21/writing-a-chip-8-emulator-part-1/">第1部分</a></li>
+<li><a target="_blank" rel="noopener" href="http://craigthomas.ca/blog/2014/07/17/writing-a-chip-8-emulator-part-2/">第2部分</a></li>
+<li><a target="_blank" rel="noopener" href="http://craigthomas.ca/blog/2015/02/19/writing-a-chip-8-emulator-draw-command-part-3/">第 3 部分</a></li>
+<li><a target="_blank" rel="noopener" href="http://craigthomas.ca/blog/2017/10/15/writing-a-chip-8-emulator-built-in-font-set-part-4/">第 4 部分</a></li>
+<li><a target="_blank" rel="noopener" href="http://craigthomas.ca/blog/2018/09/07/writing-a-chip-8-emulator-instruction-set-part-5/">第 5 部分</a></li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cturt.github.io/cinoop.html">编写 Game Boy 模拟器</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://justinmeiners.github.io/lc3-vm/">编写自己的虚拟机</a></p>
+</li>
+</ul>
+<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://beej.us/guide/bgnet/html/multi/index.html">Beej 的网络编程指南</a> <code>book</code></li>
+<li><a target="_blank" rel="noopener" href="https://eli.thegreenplace.net/2017/concurrent-servers-part-1-introduction/">并发服务器</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/from-the-scratch/http-server-what-do-you-need-to-know-to-build-a-simple-http-server-from-scratch-d1ef8945e4fa">HTTP 服务器：从头开始构建一个简单的 HTTP 服务器需要知道的一切</a></li>
+<li>让我们编写一个 TCP/IP 堆栈<ul>
+<li><a target="_blank" rel="noopener" href="http://www.saminiir.com/lets-code-tcp-ip-stack-1-ethernet-arp/">第 1 部分：以太网和 ARP</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.saminiir.com/lets-code-tcp-ip-stack-2-ipv4-icmpv4/">第 2 部分：IPv4 和 ICMPv4</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.saminiir.com/lets-code-tcp-ip-stack-3-tcp-handshake/">第 3 部分：TCP 基础知识和握手</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.saminiir.com/lets-code-tcp-ip-stack-4-tcp-data-flow-socket-api/">第 4 部分：TCP 数据流和套接字 API</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.saminiir.com/lets-code-tcp-ip-stack-5-tcp-retransmission/">第 5 部分：TCP 重传</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://lettier.github.io/posts/2016-04-26-lets-make-a-ntp-client-in-c.html">让我们用 C 语言创建一个 NTP 客户端</a></li>
+<li>从头开始编写 MQTT 代理<ul>
+<li><a target="_blank" rel="noopener" href="https://codepr.github.io/posts/sol-mqtt-broker">第 1 部分 - 协议</a></li>
+<li><a target="_blank" rel="noopener" href="https://codepr.github.io/posts/sol-mqtt-broker-p2">第 2 部分 - 网络</a></li>
+<li><a target="_blank" rel="noopener" href="https://codepr.github.io/posts/sol-mqtt-broker-p3">第 3 部分 - 服务器</a></li>
+<li><a target="_blank" rel="noopener" href="https://codepr.github.io/posts/sol-mqtt-broker-p4">第 4 部分 - 数据结构</a></li>
+<li><a target="_blank" rel="noopener" href="https://codepr.github.io/posts/sol-mqtt-broker-p5">第 5 部分 - 主题抽象</a></li>
+<li><a target="_blank" rel="noopener" href="https://codepr.github.io/posts/sol-mqtt-broker-p6">第 6 部分 - 处理程序</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://cstack.github.io/db_tutorial/">让我们建立一个简单的数据库</a></li>
+</ul>
+<h2 id="游戏开发"><a href="#游戏开发" class="headerlink" title="游戏开发"></a>游戏开发</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://gtk.dashgl.com/?folder=Astroids">小行星克隆</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://gtk.dashgl.com/?folder=Brickout">分块克隆</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLZ1QII7yudbc-Ky058TEaOstZHVbT-2hg">C中的国际象棋引擎</a> <code>video</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLkTXsX7igf8edTYU92nU-f5Ntzuf-RKvW">用 C 编写数独求解器</a> <code>video</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLkTXsX7igf8erbWGYT4iSAhpnJLJ0Nk5G">用 C 编写 Rogue/Nethack RPG</a> <code>video</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.udemy.com/course/game-loop-c-sdl/">使用 C 和 SDL 创建游戏循环</a> <code>course</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.parallelrealities.co.uk/tutorials/#ppp">创建 2D 平台游戏</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.parallelrealities.co.uk/tutorials/#shooter">创建一个 2D 射击游戏</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.parallelrealities.co.uk/tutorials/#bad">创建一个 2D 自上而下的射击游戏</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://handmadehero.org/">手工英雄</a> <code>video</code> <code>in-progress</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLZ1QII7yudbd2ZHYSEWrSddsvD5PW_r5O">刽子手</a> <code>video</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://nesdoug.com/">如何用 C 编写 NES 游戏</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://helderman.github.io/htpataic/htpataic01.html">如何用 C 编写文本冒险</a> <code>in-progress</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://jborza.github.io/games/2020/07/12/solitaire-cli.html">用 C 语言实现纸牌</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://gtk.dashgl.com/?folder=Invaders">入侵者克隆</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLeEj4c2zF7PaFv5MPYhNAkBGrkx4iPGJo">学习如何开发自己的 GameBoy 游戏</a> <code>video</code> <code>in-progress</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLT6WFYYZE6uLMcPGS3qfpYm7T_gViYMMt">用 C 学习视频游戏编程</a> <code>video</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLSkJey49cOgTSj465v2KbLZ7LMn10bCF9">让我们做：危险的戴夫</a> <code>video</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PL7Ej6SUky1357r-Lqf_nogZWHssXP-hvH">从头开始用 C 语言制作游戏</a> <code>video</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLlaINRtydtNWuRfd4Ra3KeD6L9FP_tDE7">用 C 从头开始制作视频游戏</a> <code>video</code> <code>in-progress</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://brennan.io/2015/06/12/tetris-reimplementation/">关于俄罗斯方块和重新实现</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PL6Ikt4l3NbVjb7WR-eTgjOBMNCn7f3u7x">SDL 2 等距游戏教程</a> <code>video</code> <code>in-progress</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLZ1QII7yudbc7_ZgXA-gIXmME41Rs2GP5">C 中的简单井字游戏</a> <code>video</code></p>
+</li>
+<li><p>文字冒险 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">video</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in-progress</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/J_Igbh0RH8c">第1集</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=7dYKhiruW1M">第 2 集</a></li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=gCVMkKgs3uQ">使用 SDL 用 C 语言编写的井字游戏</a> <code>video</code></p>
+</li>
+<li><p>电子游戏物理教程</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.toptal.com/game/video-game-physics-part-i-an-introduction-to-rigid-body-dynamics">第一部分：刚体动力学简介</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.toptal.com/game/video-game-physics-part-ii-collision-detection-for-solid-objects">第二部分：固体物体的碰撞检测</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.toptal.com/game/video-game-physics-part-iii-constrained-rigid-body-simulation">第三部分：约束刚体仿真</a></li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.hanshq.net/othello.html">用 C 从头开始编写黑白棋游戏</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.hanshq.net/fire.html">用汇编和 C 编写老派火效应和裸机编程</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=yFLa3ln16w0">使用 SDL 用 C 语言编写 2D 游戏</a> <code>video</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.reinterpretcast.com/writing-a-game-boy-advance-game">编写 Game Boy Advance 游戏</a></p>
+</li>
+</ul>
+<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/jserv/mini-arm-os">从头开始为 ARM 构建一个最小的多任务操作系统内核</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/tokenrove/build-your-own-shell">构建你自己的外壳</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://jsandler18.github.io/">为 Raspberry Pi 构建操作系统</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.holbertonschool.com/hack-virtual-memory-stack-registers-assembly-code/">破解虚拟内存</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/cfenollosa/os-tutorial">如何从头开始创建操作系统</a> <code>in-progress</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://david942j.blogspot.com/2018/10/note-learning-kvm-implement-your-own.html">学习 KVM - 实现你自己的内核</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/s-matyukevich/raspberry-pi-os">使用Linux内核和树莓派学习操作系统开发</a> <code>in-progress</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/kamalmarhubi/shell-workshop">让我们构建一个shell！</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://danluu.com/malloc-tutorial/">让我们写一个 Malloc</a></p>
+</li>
+<li><p>让我们写一个内核</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://arjunsreedharan.org/post/82710718100/kernel-101-lets-write-a-kernel">第 1 部分 - 内核 101</a></li>
+<li><a target="_blank" rel="noopener" href="https://arjunsreedharan.org/post/99370248137/kernel-201-lets-write-a-kernel-with-keyboard">第 2 部分 - 内核 201</a></li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.lizzie.io/linux-containers-in-500-loc.html">500 行代码的 Linux 容器</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://medium.com/@lduck11007/operating-systems-development-for-dummies-3d4d786e8ac">Dummies的操作系统开发</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://tuhdo.github.io/os01/">操作系统：从 0 到 1</a> <code>book</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.ops-class.org/">OS161：了解操作系统所需的一切</a> <code>course</code></p>
+</li>
+<li><p>重写 BSD 4.4 Shell 命令： </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">video</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=MCuzvy79WWQ">猫</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=p7uJBl4A_BA">修改</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=69CYF7nJKj8">回声</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=t96qYd4OUBM">目录</a></li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.jamesmolloy.co.uk/tutorial_html/">推出您自己的玩具 UNIX 克隆操作系统</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://littleosbook.github.io/">关于操作系统开发的小书</a> <code>book</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://brennan.io/2015/01/16/write-a-shell-in-c/">用 C 写一个 Shell</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://arjunsreedharan.org/post/148675821737/write-a-simple-memory-allocator">编写一个简单的内存分配器</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://brennan.io/2016/11/14/kernel-dev-ep3/">编写系统调用</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.cs.nmsu.edu/~pfeiffer/fuse-tutorial/">编写 FUSE 文件系统</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://danishprakash.github.io/2018/01/15/write-a-shell.html">用 C 写一个 shell</a></p>
+</li>
+<li><p>编写 Unix Shell</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://indradhanush.github.io/blog/writing-a-unix-shell-part-1">第1部分</a></li>
+<li><a target="_blank" rel="noopener" href="https://indradhanush.github.io/blog/writing-a-unix-shell-part-2">第2部分</a></li>
+<li><a target="_blank" rel="noopener" href="https://indradhanush.github.io/blog/writing-a-unix-shell-part-3">第 3 部分</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="编程语言"><a href="#编程语言" class="headerlink" title="编程语言"></a>编程语言</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/DoctorWkt/acwj">编译器写作之旅</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cs.princeton.edu/courses/archive/spr09/cos333/beautiful.html">正则表达式匹配器</a></li>
+<li><a target="_blank" rel="noopener" href="https://swtch.com/~rsc/regexp/regexp1.html">正则表达式匹配既简单又快速</a></li>
+<li><a target="_blank" rel="noopener" href="http://journal.stuffwithstuff.com/2013/12/08/babys-first-garbage-collector/">宝宝的第一个垃圾收集器</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.buildyourownlisp.com/">构建你自己的 Lisp</a> <code>book</code></li>
+<li><a target="_blank" rel="noopener" href="https://holub.com/goodies/compiler/compilerDesignInC.pdf">C 编译器设计</a> <code>book</code></li>
+<li><a target="_blank" rel="noopener" href="http://www.craftinginterpreters.com/">制作口译员</a> <code>book</code> <em>第 14-30 章</em></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/Let-s-build-a-compiler">让我们构建一个编译器：AC &amp; x86 版本</a></li>
+<li>编写 C 解释器<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/0-Preface.md">第 0 部分 - 前言</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/1-Skeleton.md">第 1 部分 - 骨架</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/2-Virtual-Machine.md">第 2 部分 - 虚拟机</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/3-Lexer.md">第 3 部分 - 词法分析器</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/4-Top-down-Parsing.md">第 4 部分 - 自顶向下的解析</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/5-Variables.md">第 5 部分 - 变量</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/6-Functions.md">第 6 部分 - 函数</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/7-Statements.md">第 7 部分 - 声明</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lotabout/write-a-C-interpreter/blob/master/tutorial/en/8-Expressions.md">第 8 部分 - 表达式</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="http://maplant.com/gc.html">用 C 编写一个简单的垃圾收集器</a></li>
+<li>从头开始的计划<ul>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-introduction">第 1 部分 - 介绍</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_1-integers">第 2 部分 - 整数</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_2-booleans">第 3 部分 - 布尔值</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_3-characters">第 4 部分 - 字符</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_4-strings">第 5 部分 - 字符串</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_5-the-empty-list">第 6 部分 - 空列表</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_6-pairs">第 7 部分 - 对</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_7-symbols">第 8 部分 - 符号</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_8-quote">第 9 部分 - 报价</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_9-environments">第 10 部分 - 环境</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_10-if">第 11 部分 - 如果</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_11-primitive-procedures-part-1">第 12 部分 - 原始程序第 1 部分</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_12-primitive-procedures-part-2">第 13 部分 - 原始程序第 2 部分</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_13-lambda-the-ultimate">第 14 部分 - 终极版 Lambda</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_14-begin">第 15 部分 - 开始</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_15-cond">第 16 部分 - 条件</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_16-let">第 17 部分 - 让</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_17-and-and-or">第 18 部分 - 和和或</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_18-apply">第 19 部分 - 申请</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_19-eval">第 20 部分 - 评估</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_20-io">第 21 部分 - I/O</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_21-standard-library">第 22 部分 - 标准库</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-v0_22-garbage-collection">第 23 部分 - 垃圾收集</a></li>
+<li><a target="_blank" rel="noopener" href="http://peter.michaux.ca/articles/scheme-from-scratch-bootstrap-conclusion">第 24 部分 - 结论</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="未分类"><a href="#未分类" class="headerlink" title="未分类"></a>未分类</h2><ul>
+<li>C 语言中的虚拟区块链实现<ul>
+<li><a target="_blank" rel="noopener" href="https://myram.xyz/c-blockchain-implementation-1/">第1部分</a></li>
+<li><a target="_blank" rel="noopener" href="https://myram.xyz/c-blockchain-implementation-2/">第2部分</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://viewsourcecode.org/snaptoken/kilo/">构建您自己的文本编辑器</a></li>
+<li><a target="_blank" rel="noopener" href="http://dranger.com/ffmpeg/ffmpeg.html">如何编写少于 1000 行的视频播放器</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/leandromoreira/ffmpeg-libav-tutorial">艰难地学习 FFmpeg libav</a> <code>in-progress</code></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jamesroutley/write-a-hash-table">用C写一个哈希表</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.hanshq.net/bigint.html">用 C 编写 BigInt 计算器</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.hanshq.net/zip.html">用 C 从头开始编写你自己的 Zip</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.codedrome.com/svg-library-in-c/">编写 SVG 库</a></li>
+</ul>
+<h3 id="Tinyhttpd"><a href="#Tinyhttpd" class="headerlink" title="Tinyhttpd"></a>Tinyhttpd</h3><p>介绍：tinyhttpd 是一个不到 500 行的超轻量型 Http Server，非常适合学习服务器工作原理</p>
+<p>源码分析：<a target="_blank" rel="noopener" href="http://blog.csdn.net/programvae/article/details/71036295">在此</a></p>
+<p>链接：<a target="_blank" rel="noopener" href="https://github.com/yangtingcheng/tinyhttpd">tinyhttpd</a></p>
+<h3 id="MemoryPool"><a href="#MemoryPool" class="headerlink" title="MemoryPool"></a>MemoryPool</h3><p>介绍：一个用 C++ 实现的简单内存池</p>
+<p>源码分析：<a target="_blank" rel="noopener" href="http://blog.csdn.net/jcjc918/article/details/44997089">在此</a></p>
+<p>链接：<a target="_blank" rel="noopener" href="https://github.com/AngryHacker/code-with-comments/tree/master/memorypool/C-98">MemoryPool(98 版本)</a></p>
+<h3 id="Webbench"><a href="#Webbench" class="headerlink" title="Webbench"></a>Webbench</h3><p>介绍：Webbench是一个在linux下使用的非常简单的网站压测工具。它使用fork()模拟多个客户端同时访问我们设定的URL， 测试网站在压力下工作的性能，最多可以模拟3万个并发连接去测试网站的负载能力。</p>
+<p>源码分析：<a target="_blank" rel="noopener" href="http://blog.csdn.net/jcjc918/article/details/44965951">在此</a></p>
+<p>链接：<a target="_blank" rel="noopener" href="https://github.com/AngryHacker/code-with-comments/tree/master/webbench">webbench</a></p>
+<h3 id="Threadpool"><a href="#Threadpool" class="headerlink" title="Threadpool"></a>Threadpool</h3><p>介绍：基于 pthread 实现的简单线程池</p>
+<p>源码分析：<a target="_blank" rel="noopener" href="http://blog.csdn.net/jcjc918/article/details/50395528">在此</a></p>
+<p>链接：<a target="_blank" rel="noopener" href="https://github.com/AngryHacker/code-with-comments/tree/master/threadpool">Threadpool</a></p>
+<h3 id="Leveldb"><a href="#Leveldb" class="headerlink" title="Leveldb"></a>Leveldb</h3><p>介绍：Jeff Dean 和 Sanjay Ghemawat 两位超级大神实现的高效 kv 数据库。</p>
+<p>源码分析：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/haippy/archive/2011/12/04/2276064.html">LevelDb 日知录</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/AngryHacker/code-with-comments/blob/master/attachment/leveldb%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90.pdf">leveldb 实现解析 - 那岩</a></li>
+</ul>
+<p>以上是我觉得分析得最好的两篇。不过随着 leveldb 项目的推进，有些代码也发生了变动。我进行注释的源码是最新的 1.18 版本，结合两篇解析写自己的理解，目前已阅读的是主要流程，水平有限，有些地方也不甚清楚，欢迎交流。</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://github.com/AngryHacker/code-with-comments/tree/master/leveldb">Leveldb</a></p>
+<h2 id="第8086章-贪吃蛇"><a href="#第8086章-贪吃蛇" class="headerlink" title="第8086章 贪吃蛇"></a>第8086章 贪吃蛇</h2><p>时间：2016-12</p>
+<p>介绍：<a target="_blank" rel="noopener" href="https://blog.csdn.net/to_be_better/article/details/53512913">https://blog.csdn.net/to_be_better/article/details/53512913</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/shiyicode/project/blob/master/readme-images/20161208122620511.gif"><img src="https://github.com/shiyicode/project/raw/master/readme-images/20161208122620511.gif" alt="img"></a></p>
+<h2 id="步步为营-墙棋AI人机对战-Android"><a href="#步步为营-墙棋AI人机对战-Android" class="headerlink" title="步步为营-墙棋AI人机对战(Android)"></a>步步为营-墙棋AI人机对战(Android)</h2><p>时间：2016-08</p>
+<p>介绍：<a target="_blank" rel="noopener" href="https://shiyi.blog.csdn.net/article/details/52088396">https://shiyi.blog.csdn.net/article/details/52088396</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/shiyicode/project/blob/master/readme-images/20160801191336969.png"><img src="https://github.com/shiyicode/project/raw/master/readme-images/20160801191336969.png" alt="img"></a></p>
+<h2 id="C-QT-俄罗斯对话框"><a href="#C-QT-俄罗斯对话框" class="headerlink" title="C++/QT 俄罗斯对话框"></a>C++/QT 俄罗斯对话框</h2><p>时间：2016-04</p>
+<p>介绍：<a target="_blank" rel="noopener" href="https://shiyi.blog.csdn.net/article/details/51055813">https://shiyi.blog.csdn.net/article/details/51055813</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/shiyicode/project/blob/master/readme-images/20160404104940464.png"><img src="https://github.com/shiyicode/project/raw/master/readme-images/20160404104940464.png" alt="img"></a></p>
+<h2 id="C-QT贪吃蛇"><a href="#C-QT贪吃蛇" class="headerlink" title="C++/QT贪吃蛇"></a>C++/QT贪吃蛇</h2><p>时间：2016-04</p>
+<p>介绍：<a target="_blank" rel="noopener" href="https://shiyi.blog.csdn.net/article/details/51058164">https://shiyi.blog.csdn.net/article/details/51058164</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/shiyicode/project/blob/master/readme-images/20160404183256409.png"><img src="https://github.com/shiyicode/project/raw/master/readme-images/20160404183256409.png" alt="img"></a></p>
+<h2 id="五子棋AI图形界面人机对战（JAVA实现）"><a href="#五子棋AI图形界面人机对战（JAVA实现）" class="headerlink" title="五子棋AI图形界面人机对战（JAVA实现）"></a>五子棋AI图形界面人机对战（JAVA实现）</h2><p>时间：2016-03</p>
+<p>介绍：<a target="_blank" rel="noopener" href="https://shiyi.blog.csdn.net/article/details/50913168">https://shiyi.blog.csdn.net/article/details/50913168</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/shiyicode/project/blob/master/readme-images/20160317135042608.png"><img src="https://github.com/shiyicode/project/raw/master/readme-images/20160317135042608.png" alt="img"></a></p>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">C++项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-C"><span class="nav-number">1.0.1.</span> <span class="nav-text">C&#x2F;C++</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.0.2.</span> <span class="nav-text"></span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E4%B8%AD%E5%9F%BA%E4%BA%8E%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%95%99%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">C 中基于项目的教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-number">2.1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84"><span class="nav-number">2.2.</span> <span class="nav-text">计算机架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="nav-number">2.3.</span> <span class="nav-text">计算机网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.4.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91"><span class="nav-number">2.5.</span> <span class="nav-text">游戏开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.6.</span> <span class="nav-text">操作系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80"><span class="nav-number">2.7.</span> <span class="nav-text">编程语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E5%88%86%E7%B1%BB"><span class="nav-number">2.8.</span> <span class="nav-text">未分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tinyhttpd"><span class="nav-number">2.8.1.</span> <span class="nav-text">Tinyhttpd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MemoryPool"><span class="nav-number">2.8.2.</span> <span class="nav-text">MemoryPool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Webbench"><span class="nav-number">2.8.3.</span> <span class="nav-text">Webbench</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Threadpool"><span class="nav-number">2.8.4.</span> <span class="nav-text">Threadpool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Leveldb"><span class="nav-number">2.8.5.</span> <span class="nav-text">Leveldb</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC8086%E7%AB%A0-%E8%B4%AA%E5%90%83%E8%9B%87"><span class="nav-number">2.9.</span> <span class="nav-text">第8086章 贪吃蛇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E6%AD%A5%E4%B8%BA%E8%90%A5-%E5%A2%99%E6%A3%8BAI%E4%BA%BA%E6%9C%BA%E5%AF%B9%E6%88%98-Android"><span class="nav-number">2.10.</span> <span class="nav-text">步步为营-墙棋AI人机对战(Android)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-QT-%E4%BF%84%E7%BD%97%E6%96%AF%E5%AF%B9%E8%AF%9D%E6%A1%86"><span class="nav-number">2.11.</span> <span class="nav-text">C++&#x2F;QT 俄罗斯对话框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-QT%E8%B4%AA%E5%90%83%E8%9B%87"><span class="nav-number">2.12.</span> <span class="nav-text">C++&#x2F;QT贪吃蛇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E5%AD%90%E6%A3%8BAI%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E4%BA%BA%E6%9C%BA%E5%AF%B9%E6%88%98%EF%BC%88JAVA%E5%AE%9E%E7%8E%B0%EF%BC%89"><span class="nav-number">2.13.</span> <span class="nav-text">五子棋AI图形界面人机对战（JAVA实现）</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="mk"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">mk</p>
+  <div class="site-description" itemprop="description">无惛惛之事者，无赫赫之功；无冥冥之志者，无昭昭之明。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021-08 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mk</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+//----------
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不算子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+//---------
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
