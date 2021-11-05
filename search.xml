@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>hexo引用本地图片无法显示的问题</title>
+      <link href="/2021/11/05/hexo%E5%BC%95%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+      <url>/2021/11/05/hexo%E5%BC%95%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1、安装插件与配置"><a href="#1、安装插件与配置" class="headerlink" title="1、安装插件与配置"></a>1、安装插件与配置</h2><p><strong>1、安装hexo-asset-image</strong></p><p><code>npm install https://github.com/CodeFalling/hexo-asset-image --save</code></p><p>打开_config.yml文件，修改下述内容</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure><p><strong>2、创建同名文件夹</strong></p><p>在运行 <code>hexo new post :title.md</code> 来生成 <code>_posts</code> 目录的MD文档时，在 <code>/source/_posts</code> 文件夹内会建立一个与<code>:title.md文件</code>同名的文件夹，结构如下；</p><figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">文章名称(文件夹)</span><br><span class="line">├── hello.jpg</span><br><span class="line">└── test.jpg</span><br><span class="line">文章名称.md（文件）</span><br></pre></td></tr></table></figure><p>将图片保存在改文件夹中，之后就可以在远端正常显示图片了。</p><h2 id="2、Typora图片默认保存位置设置"><a href="#2、Typora图片默认保存位置设置" class="headerlink" title="2、Typora图片默认保存位置设置"></a><strong>2、Typora图片默认保存位置设置</strong></h2><p>为了图片在本地也能正常显示，修改一下图片的保存位置为</p><p><code>./$&#123;filename&#125;/</code></p><p><img src="/2021/11/05/hexo%E5%BC%95%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/image-20211106002026419.png" alt="image-20211106002026419"></p><p>这样之后图片会自动保存在同名文件夹中，在推送的时候也能正常显示了</p><h2 id="3、参考链接"><a href="#3、参考链接" class="headerlink" title="3、参考链接"></a>3、参考链接</h2><ul><li><a href="https://www.jianshu.com/p/75a8b0d9b969">https://www.jianshu.com/p/75a8b0d9b969</a></li><li><a href="https://blog.csdn.net/xjm850552586/article/details/84101345">https://blog.csdn.net/xjm850552586/article/details/84101345</a></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> hexo 本地图片 显示 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux基础</title>
       <link href="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/"/>
       <url>/2021/11/05/Linux%E5%9F%BA%E7%A1%80/</url>
