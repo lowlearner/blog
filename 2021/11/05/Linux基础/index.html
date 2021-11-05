@@ -22,49 +22,49 @@
     var CONFIG = {"hostname":"cpp123.xyz","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="11月LInux基础打卡任务1：使用命令行登录指定的Linux环境任务要点：ssh登录、密码输入、环境配置  步骤1：配置本地登录环境  因为电脑上已经有了PuTTy，所以使用该工具作为本次远程连接的工具。打开工具会进入程序主界面，如下：">
+  <meta name="description" content="11月Linux基础打卡任务1：使用命令行登录指定的Linux环境任务要点：ssh登录、密码输入、环境配置  步骤1：配置本地登录环境  因为电脑上已经有了PuTTy，所以使用该工具作为本次远程连接的工具。打开工具会进入程序主界面，如下：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux基础">
 <meta property="og:url" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="小书屋">
-<meta property="og:description" content="11月LInux基础打卡任务1：使用命令行登录指定的Linux环境任务要点：ssh登录、密码输入、环境配置  步骤1：配置本地登录环境  因为电脑上已经有了PuTTy，所以使用该工具作为本次远程连接的工具。打开工具会进入程序主界面，如下：">
+<meta property="og:description" content="11月Linux基础打卡任务1：使用命令行登录指定的Linux环境任务要点：ssh登录、密码输入、环境配置  步骤1：配置本地登录环境  因为电脑上已经有了PuTTy，所以使用该工具作为本次远程连接的工具。打开工具会进入程序主界面，如下：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105205327033.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105205512141.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105205550109.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105205709533.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/d0c50-linux2bfile2bsystem2bhierarchy-16361174098052.jpg">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105210106431.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105210646619.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105210951329.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105211614091.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105211819307.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212114111.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212258564.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212421221.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212511306.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212620338.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212704438.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105213452712.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105213640443.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105213949784.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105214310489.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105214446723.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105215334999.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105215540974.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105215639277.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105220420766.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105220626660.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105220722983.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105220801677.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105221227368.png">
-<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105221253302.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105205327033.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105205512141.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105205550109.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105205709533.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/d0c50-linux2bfile2bsystem2bhierarchy-16361174098052.jpg">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105210106431.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105210646619.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105210951329.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105211614091.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105211819307.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105212114111.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105212258564.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105212421221.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105212511306.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105212620338.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105212704438.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105213452712.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105213640443.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105213949784.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105214310489.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105214446723.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105215334999.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105215540974.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105215639277.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105220420766.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105220626660.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105220722983.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105220801677.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105221227368.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105221253302.png">
 <meta property="article:published_time" content="2021-11-05T14:29:19.000Z">
-<meta property="article:modified_time" content="2021-11-05T14:41:40.842Z">
+<meta property="article:modified_time" content="2021-11-05T15:06:38.592Z">
 <meta property="article:author" content="mk">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105205327033.png">
+<meta name="twitter:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105205327033.png">
 
 <link rel="canonical" href="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/">
 
@@ -250,7 +250,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-11-05 22:29:19 / 修改时间：22:41:40" itemprop="dateCreated datePublished" datetime="2021-11-05T22:29:19+08:00">2021-11-05</time>
+              <time title="创建时间：2021-11-05 22:29:19 / 修改时间：23:06:38" itemprop="dateCreated datePublished" datetime="2021-11-05T22:29:19+08:00">2021-11-05</time>
             </span>
 
           
@@ -285,39 +285,39 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="11月LInux基础打卡"><a href="#11月LInux基础打卡" class="headerlink" title="11月LInux基础打卡"></a>11月LInux基础打卡</h1><h2 id="任务1：使用命令行登录指定的Linux环境"><a href="#任务1：使用命令行登录指定的Linux环境" class="headerlink" title="任务1：使用命令行登录指定的Linux环境"></a><strong>任务1：使用命令行登录指定的Linux环境</strong></h2><p><strong>任务要点：ssh登录、密码输入、环境配置</strong></p>
+        <h1 id="11月Linux基础打卡"><a href="#11月Linux基础打卡" class="headerlink" title="11月Linux基础打卡"></a>11月Linux基础打卡</h1><h2 id="任务1：使用命令行登录指定的Linux环境"><a href="#任务1：使用命令行登录指定的Linux环境" class="headerlink" title="任务1：使用命令行登录指定的Linux环境"></a><strong>任务1：使用命令行登录指定的Linux环境</strong></h2><p><strong>任务要点：ssh登录、密码输入、环境配置</strong></p>
 <ul>
 <li>步骤1：配置本地登录环境</li>
 </ul>
 <p>因为电脑上已经有了PuTTy，所以使用该工具作为本次远程连接的工具。打开工具会进入程序主界面，如下：</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105205327033.png" alt="image-20211105205327033"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105205327033.png" alt="image-20211105205327033"></p>
 <span id="more"></span>
 
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4><ul>
+<h4 id><a href="#" class="headerlink" title></a></h4><ul>
 <li><p>步骤2：使用如下信息登录系统</p>
 </li>
 <li><p><strong>用户名：coggle，密码：coggle，IP：139.198.15.157</strong></p>
 </li>
 </ul>
 <p>我们在<strong>IP address</strong>输入栏输入IP，点击打卡按钮，进入登录页面，此时会弹出警告窗口</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105205512141.png" alt="image-20211105205512141"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105205512141.png" alt="image-20211105205512141"></p>
 <p>点击<strong>是</strong>即可，之后进入登录页面，输入用户名和密码。</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105205550109.png" alt="image-20211105205550109"></p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105205709533.png" alt="image-20211105205709533"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105205550109.png" alt="image-20211105205550109"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105205709533.png" alt="image-20211105205709533"></p>
 <p>成功进入系统页面。</p>
 <h2 id="任务2：在目录下创建文件夹、删除文件夹"><a href="#任务2：在目录下创建文件夹、删除文件夹" class="headerlink" title="任务2：在目录下创建文件夹、删除文件夹"></a><strong>任务2：在目录下创建文件夹、删除文件夹</strong></h2><p>任务要点：创建文件夹、创建文件、删除文件、删除文件夹</p>
 <ul>
 <li>步骤1：学习<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-system-contents.html">Linux的目录结构</a></li>
 </ul>
-<p>Linux的系统目录结构为树状结构，<img src="Linux%E5%9F%BA%E7%A1%80.assets/d0c50-linux2bfile2bsystem2bhierarchy-16361174098052.jpg" alt="img"></p>
+<p>Linux的系统目录结构为树状结构，<img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/d0c50-linux2bfile2bsystem2bhierarchy-16361174098052.jpg" alt="img"></p>
 <p>输入 **ls \**查看系统根目录下的文件结构，如下：</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105210106431.png" alt="image-20211105210106431"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105210106431.png" alt="image-20211105210106431"></p>
 <p>输入<strong>ls  /home</strong>和 <strong>ls /usr</strong>可查看home目录和usr目录下 的目录。</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105210646619.png" alt="image-20211105210646619"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105210646619.png" alt="image-20211105210646619"></p>
 <p>其中，**/etc**存放了系统配置文件，更改某些文件可能导致系统不能启动。</p>
 <p><strong>/bin , /sbin, /usr/bin, /usr/sbin</strong> 是系统预设的执行文件所在目录，比如 ls 在 /bin/ls 目录下。</p>
 <p><strong>/var</strong> 存放了系统程序生成的日志， 具体在 <strong>/var/log</strong>目录下。</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105210951329.png" alt="image-20211105210951329"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105210951329.png" alt="image-20211105210951329"></p>
 <ul>
 <li><p>步骤3：</p>
 </li>
@@ -325,35 +325,35 @@
 <li>在/home/coggle目录下，新建一个以你英文昵称（中间不要有空格哦）的文件夹A</li>
 </ul>
 <p>首先 <strong>cd /home/coggle</strong>进入目录：</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105211614091.png" alt="image-20211105211614091"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105211614091.png" alt="image-20211105211614091"></p>
 <p>之后<strong>mkdir zifei</strong>创建一个名为zifei的目录</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105211819307.png" alt="image-20211105211819307"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105211819307.png" alt="image-20211105211819307"></p>
 <p>可以看到已经成功创建该目录。</p>
 <ul>
 <li>在文件夹A内部创建一个以coggle命令的文件夹B</li>
 </ul>
 <p>之后 <strong>cd zifei</strong>进入我们创建的目录，<strong>mkdir coggle</strong>创建 coggle文件夹</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212114111.png" alt="image-20211105212114111"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105212114111.png" alt="image-20211105212114111"></p>
 </li>
 <li><p>步骤4：在B文件夹内创建一个空txt文件</p>
 </li>
 </ul>
 <p>之后 <strong>cd coggle</strong>进入我们创建的目录，<strong>touch empty.txt</strong>创建 一个名为empty的空txt文件，输入cat可以查看文件内容。</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212258564.png" alt="image-20211105212258564"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105212258564.png" alt="image-20211105212258564"></p>
 <ul>
 <li>步骤5：删除步骤4创建的文件</li>
 </ul>
 <p>使用<strong>rm -f empty.txt</strong>命令删除该txt文件，此时可以看到当前目录下empty.txt文件已经被删除。</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212421221.png" alt="image-20211105212421221"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105212421221.png" alt="image-20211105212421221"></p>
 <ul>
 <li>步骤6：删除文件夹B，然后删除文件夹A</li>
 </ul>
 <p>输入 **cd ..**进入coggle 文件夹上级目录</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212511306.png" alt="image-20211105212511306"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105212511306.png" alt="image-20211105212511306"></p>
 <p>然后使用 <strong>rm -r coggle</strong>删除该文件夹，</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212620338.png" alt="image-20211105212620338"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105212620338.png" alt="image-20211105212620338"></p>
 <p>同样，进入更上一级目录，删除zifei文件夹</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212704438.png" alt="image-20211105212704438"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105212704438.png" alt="image-20211105212704438"></p>
 <h2 id="任务3：在目录下下载文件、阅读文件"><a href="#任务3：在目录下下载文件、阅读文件" class="headerlink" title="任务3：在目录下下载文件、阅读文件"></a><strong>任务3：在目录下下载文件、阅读文件</strong></h2><p>任务要点：下载文件、移动文件、阅读文件</p>
 <ul>
 <li><p>步骤1：</p>
@@ -363,7 +363,7 @@
 <li>在文件夹A内部创建一个以coggle命令的文件夹B</li>
 </ul>
 <p>同任务2，创建zifei和coggle文件夹</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105213452712.png" alt="image-20211105213452712"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105213452712.png" alt="image-20211105213452712"></p>
 </li>
 <li><p>步骤2：使用wget命令下载<a target="_blank" rel="noopener" href="https://mirror.coggle.club/dataset/affairs.txt%EF%BC%8C%E5%88%B0%E6%96%87%E4%BB%B6%E5%A4%B9B">https://mirror.coggle.club/dataset/affairs.txt，到文件夹B</a></p>
 </li>
@@ -371,7 +371,7 @@
 <li>wget教程：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pretty-ru/p/10936023.html">https://www.cnblogs.com/pretty-ru/p/10936023.html</a></li>
 </ul>
 <p>使用<strong>wget <a target="_blank" rel="noopener" href="https://mirror.coggle.club/dataset/affairs.txt">https://mirror.coggle.club/dataset/affairs.txt</a></strong>下载affairs.txt文件到coggle目录下</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105213640443.png" alt="image-20211105213640443"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105213640443.png" alt="image-20211105213640443"></p>
 </li>
 <li><p>步骤3：使用head、cat、tail命令阅读下载的文件。</p>
 </li>
@@ -379,13 +379,13 @@
 <li>阅读文件基础教程：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jixp/p/10833801.html">https://www.cnblogs.com/jixp/p/10833801.html</a></li>
 </ul>
 <p>head默认显示前10行数据，使用<strong>head  affairs.txt</strong>查看文件前10行数据</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105213949784.png" alt="image-20211105213949784"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105213949784.png" alt="image-20211105213949784"></p>
 </li>
 </ul>
 <p>cat从第一行开始显示内容，输入<strong>cat  affairs.txt</strong></p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105214310489.png" alt="image-20211105214310489"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105214310489.png" alt="image-20211105214310489"></p>
 <p>tail则默认只输出最后10行数据</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105214446723.png" alt="image-20211105214446723"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105214446723.png" alt="image-20211105214446723"></p>
 <ul>
 <li>步骤4：在命令行使用ipython进入python3环境，并使用pandas读取下载的文件。</li>
 </ul>
@@ -393,10 +393,10 @@
 <ol>
 <li>首先进入ipython，之后导入pandas库。</li>
 </ol>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105215334999.png" alt="image-20211105215334999"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105215334999.png" alt="image-20211105215334999"></p>
 <p>读取命令才用 <strong>read_csv</strong>或者<strong>read_table</strong>都可以。</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105215540974.png" alt="image-20211105215540974"></p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105215639277.png" alt="image-20211105215639277"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105215540974.png" alt="image-20211105215540974"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105215639277.png" alt="image-20211105215639277"></p>
 <p>可以看到，该文件共有6366行，6列数据，每列分别为rate_marriage, age, yrs_married, children, religiou, affairs。</p>
 <p><strong>任务4：在目录下使用vi或vim编辑文件</strong></p>
 <p>任务要点：vi和vim使用</p>
@@ -415,19 +415,19 @@
 <ol>
 <li>首先使用<strong>nano  ex1.py</strong>创建并打开ex1.py</li>
 </ol>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105220420766.png" alt="image-20211105220420766"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105220420766.png" alt="image-20211105220420766"></p>
 <ul>
 <li>​    Ctrl + G ：取得线上说明（help），比较有用 。相当于指令说明书。<br>​    Ctrl + X ：离开naon软件，如果有修改则会提示保存。<br>​    Ctrl + R ：从其他文件读入数据，可以将某个文件的内容贴在本文件中（感觉挺有意思的功能）。<br>​    Ctrl + O ：储存盘案，若你又权限的话，就能够储存盘案了。<br>​    Ctrl + C ：说明当前光标所在处的行数与列数等信息。<br>​    Ctrl + _  ： 可以直接输入行号，光标快速移动到该行。<br>​    Alt + Y ：校正语法功能，打开或者关闭，开关按钮。<br>​    Alt + M： 可以支持鼠标来移动光标的功能，开关按钮。</li>
 </ul>
 <p>编辑完成后，使用Ctrl+X退出，如果文件被修改，会提示是否保存文件，输入Y保存文件。</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105220626660.png" alt="image-20211105220626660"></p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105220722983.png" alt="image-20211105220722983"></p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105220801677.png" alt="image-20211105220801677"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105220626660.png" alt="image-20211105220626660"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105220722983.png" alt="image-20211105220722983"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105220801677.png" alt="image-20211105220801677"></p>
 <p>2、使用vim创建文件。</p>
 <p>输入<strong>vim ex2.py</strong>创建并打开ex2.py文件，之后输入 <strong>i</strong>进入编辑模式，编辑完成后，使用ESC退出编辑模式。</p>
 <p>使用<strong>：</strong>进入命令模式，输入wq保存并退出。</p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105221227368.png" alt="image-20211105221227368"></p>
-<p><img src="Linux%E5%9F%BA%E7%A1%80.assets/image-20211105221253302.png" alt="image-20211105221253302"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105221227368.png" alt="image-20211105221227368"></p>
+<p><img src="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/image-20211105221253302.png" alt="image-20211105221253302"></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/happymeng/p/10481293.html">https://www.cnblogs.com/happymeng/p/10481293.html</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/junxieshiguan/article/details/84104912">https://blog.csdn.net/junxieshiguan/article/details/84104912</a></li>
@@ -532,7 +532,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#11%E6%9C%88LInux%E5%9F%BA%E7%A1%80%E6%89%93%E5%8D%A1"><span class="nav-number">1.</span> <span class="nav-text">11月LInux基础打卡</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A11%EF%BC%9A%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%99%BB%E5%BD%95%E6%8C%87%E5%AE%9A%E7%9A%84Linux%E7%8E%AF%E5%A2%83"><span class="nav-number">1.1.</span> <span class="nav-text">任务1：使用命令行登录指定的Linux环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.0.1.</span> <span class="nav-text"></span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A12%EF%BC%9A%E5%9C%A8%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E3%80%81%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">1.2.</span> <span class="nav-text">任务2：在目录下创建文件夹、删除文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A13%EF%BC%9A%E5%9C%A8%E7%9B%AE%E5%BD%95%E4%B8%8B%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E3%80%81%E9%98%85%E8%AF%BB%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">任务3：在目录下下载文件、阅读文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#11%E6%9C%88Linux%E5%9F%BA%E7%A1%80%E6%89%93%E5%8D%A1"><span class="nav-number">1.</span> <span class="nav-text">11月Linux基础打卡</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A11%EF%BC%9A%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%99%BB%E5%BD%95%E6%8C%87%E5%AE%9A%E7%9A%84Linux%E7%8E%AF%E5%A2%83"><span class="nav-number">1.1.</span> <span class="nav-text">任务1：使用命令行登录指定的Linux环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.0.1.</span> <span class="nav-text"></span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A12%EF%BC%9A%E5%9C%A8%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E3%80%81%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">1.2.</span> <span class="nav-text">任务2：在目录下创建文件夹、删除文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A13%EF%BC%9A%E5%9C%A8%E7%9B%AE%E5%BD%95%E4%B8%8B%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E3%80%81%E9%98%85%E8%AF%BB%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">任务3：在目录下下载文件、阅读文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
