@@ -22,30 +22,64 @@
     var CONFIG = {"hostname":"cpp123.xyz","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="无惛惛之事者，无赫赫之功；无冥冥之志者，无昭昭之明。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小书屋">
-<meta property="og:url" content="http://cpp123.xyz/index.html">
+  <meta name="description" content="11月LInux基础打卡任务1：使用命令行登录指定的Linux环境任务要点：ssh登录、密码输入、环境配置  步骤1：配置本地登录环境  因为电脑上已经有了PuTTy，所以使用该工具作为本次远程连接的工具。打开工具会进入程序主界面，如下：   步骤2：使用如下信息登录系统  用户名：coggle，密码：coggle，IP：139.198.15.157   我们在IP address输入栏输入IP，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux基础">
+<meta property="og:url" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="小书屋">
-<meta property="og:description" content="无惛惛之事者，无赫赫之功；无冥冥之志者，无昭昭之明。">
+<meta property="og:description" content="11月LInux基础打卡任务1：使用命令行登录指定的Linux环境任务要点：ssh登录、密码输入、环境配置  步骤1：配置本地登录环境  因为电脑上已经有了PuTTy，所以使用该工具作为本次远程连接的工具。打开工具会进入程序主界面，如下：   步骤2：使用如下信息登录系统  用户名：coggle，密码：coggle，IP：139.198.15.157   我们在IP address输入栏输入IP，">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105205327033.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105205512141.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105205550109.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105205709533.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/d0c50-linux2bfile2bsystem2bhierarchy-16361174098052.jpg">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105210106431.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105210646619.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105210951329.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105211614091.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105211819307.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212114111.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212258564.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212421221.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212511306.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212620338.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105212704438.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105213452712.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105213640443.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105213949784.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105214310489.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105214446723.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105215334999.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105215540974.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105215639277.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105220420766.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105220626660.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105220722983.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105220801677.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105221227368.png">
+<meta property="og:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105221253302.png">
+<meta property="article:published_time" content="2021-11-05T14:29:19.000Z">
+<meta property="article:modified_time" content="2021-11-05T14:29:49.177Z">
 <meta property="article:author" content="mk">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.assets/image-20211105205327033.png">
 
-<link rel="canonical" href="http://cpp123.xyz/">
+<link rel="canonical" href="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>小书屋</title>
+  <title>Linux基础 | 小书屋</title>
   
 
 
@@ -183,9 +217,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -201,10 +236,9 @@
       <meta itemprop="name" content="小书屋">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/05/Linux%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">Linux基础</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Linux基础
+        </h1>
 
         <div class="post-meta">
 
@@ -219,7 +253,14 @@
               <time title="创建时间：2021-11-05 22:29:19 / 修改时间：22:29:49" itemprop="dateCreated datePublished" datetime="2021-11-05T22:29:19+08:00">2021-11-05</time>
             </span>
 
-          <br>
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -244,7 +285,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="11月LInux基础打卡"><a href="#11月LInux基础打卡" class="headerlink" title="11月LInux基础打卡"></a>11月LInux基础打卡</h1><h2 id="任务1：使用命令行登录指定的Linux环境"><a href="#任务1：使用命令行登录指定的Linux环境" class="headerlink" title="任务1：使用命令行登录指定的Linux环境"></a><strong>任务1：使用命令行登录指定的Linux环境</strong></h2><p><strong>任务要点：ssh登录、密码输入、环境配置</strong></p>
+        <h1 id="11月LInux基础打卡"><a href="#11月LInux基础打卡" class="headerlink" title="11月LInux基础打卡"></a>11月LInux基础打卡</h1><h2 id="任务1：使用命令行登录指定的Linux环境"><a href="#任务1：使用命令行登录指定的Linux环境" class="headerlink" title="任务1：使用命令行登录指定的Linux环境"></a><strong>任务1：使用命令行登录指定的Linux环境</strong></h2><p><strong>任务要点：ssh登录、密码输入、环境配置</strong></p>
 <ul>
 <li>步骤1：配置本地登录环境</li>
 </ul>
@@ -391,7 +432,6 @@
 <li><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-vim.html">https://www.runoob.com/linux/linux-vim.html</a></li>
 </ul>
 
-      
     </div>
 
     
@@ -399,529 +439,45 @@
     
 
      
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://cpp123.xyz/2021/09/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="mk">
-      <meta itemprop="description" content="无惛惛之事者，无赫赫之功；无冥冥之志者，无昭昭之明。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小书屋">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="post-title-link" itemprop="url">网络编程</a>
-        </h2>
-
-        <div class="post-meta">
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-09-22 09:23:33 / 修改时间：09:58:39" itemprop="dateCreated datePublished" datetime="2021-09-22T09:23:33+08:00">2021-09-22</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>496</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="网络编程重难点笔记"><a href="#网络编程重难点笔记" class="headerlink" title="网络编程重难点笔记"></a>网络编程重难点笔记</h1><h1 id="一：socket函数"><a href="#一：socket函数" class="headerlink" title="一：socket函数"></a>一：socket函数</h1><table>
-<thead>
-<tr>
-<th>函数名称</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>socket</td>
-<td>创造套接字</td>
-</tr>
-<tr>
-<td>bind</td>
-<td>将一个socket绑定到一个IP与端口的二元组上</td>
-</tr>
-<tr>
-<td>listen</td>
-<td>将一个socket变成监听状态</td>
-</tr>
-<tr>
-<td>connect</td>
-<td>尝试建立TCP连接，一般用于客户端</td>
-</tr>
-<tr>
-<td>accept</td>
-<td>尝试接收一个连接，一般用于服务的</td>
-</tr>
-<tr>
-<td>send</td>
-<td>通过一个socket发送数据</td>
-</tr>
-<tr>
-<td>recv</td>
-<td>通过一个socket接收数据</td>
-</tr>
-<tr>
-<td>select</td>
-<td>判断一组socket上的读写和异常事件</td>
-</tr>
-<tr>
-<td>gethostbyname</td>
-<td>通过域名获取机器地址</td>
-</tr>
-<tr>
-<td>close</td>
-<td>关闭一个套接字，回收该socket对应的资源。Windows中为closesocket</td>
-</tr>
-<tr>
-<td>shutdown</td>
-<td>关闭socket收发通道</td>
-</tr>
-<tr>
-<td>setsockopt</td>
-<td>设置一个套接字选项</td>
-</tr>
-<tr>
-<td>getsockopt</td>
-<td>获取一个socket选项</td>
-</tr>
-</tbody></table>
-<h3 id="1、Linux中查看socket函数的帮助信息"><a href="#1、Linux中查看socket函数的帮助信息" class="headerlink" title="1、Linux中查看socket函数的帮助信息"></a>1、Linux中查看socket函数的帮助信息</h3><p><code>man + 函数签名</code>如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man connect</span><br></pre></td></tr></table></figure>
-
-<p><img src="%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B.assets/image-20210922093352124-16322744366551.png" alt="image-20210922093352124"></p>
-<h3 id="2、TCP通信基本流程"><a href="#2、TCP通信基本流程" class="headerlink" title="2、TCP通信基本流程"></a>2、TCP通信基本流程</h3><h4 id="服务端："><a href="#服务端：" class="headerlink" title="服务端："></a>服务端：</h4><ol>
-<li>创建socket</li>
-<li>bind</li>
-<li>listen</li>
-<li>当有请求时，accept，产生一个新的socket</li>
-<li>基于新的socket调用send或recv，进行通信</li>
-<li>通信结束后，close</li>
-</ol>
-<h4 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h4><ol>
-<li>创建socket</li>
-<li>connect</li>
-<li>send 或者 recv</li>
-<li>close</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://cpp123.xyz/2021/09/22/C++11/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="mk">
-      <meta itemprop="description" content="无惛惛之事者，无赫赫之功；无冥冥之志者，无昭昭之明。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小书屋">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/22/C++11/" class="post-title-link" itemprop="url">C++11</a>
-        </h2>
-
-        <div class="post-meta">
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-09-22 00:03:14 / 修改时间：00:15:37" itemprop="dateCreated datePublished" datetime="2021-09-22T00:03:14+08:00">2021-09-22</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>5.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="深入应用C-11"><a href="#深入应用C-11" class="headerlink" title="深入应用C++11"></a><a target="_blank" rel="noopener" href="https://github.com/qicosmos/cosmos.git">深入应用C++11</a></h1><h2 id="一、C-11重要特性"><a href="#一、C-11重要特性" class="headerlink" title="一、C++11重要特性"></a>一、C++11重要特性</h2><h3 id="1、类型推导"><a href="#1、类型推导" class="headerlink" title="1、类型推导"></a>1、类型推导</h3><ul>
-<li>auto</li>
-<li>decltype</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/22/C++11/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-
-     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://cpp123.xyz/2021/09/22/c++projects/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="mk">
-      <meta itemprop="description" content="无惛惛之事者，无赫赫之功；无冥冥之志者，无昭昭之明。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小书屋">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/22/c++projects/" class="post-title-link" itemprop="url">C++项目列表</a>
-        </h2>
-
-        <div class="post-meta">
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-09-22 00:03:14 / 修改时间：00:16:00" itemprop="dateCreated datePublished" datetime="2021-09-22T00:03:14+08:00">2021-09-22</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="C-项目"><a href="#C-项目" class="headerlink" title="C++项目"></a>C++项目</h1><h3 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h3><ul>
-<li>文字<ul>
-<li><a target="_blank" rel="noopener" href="http://www.buildyourownlisp.com/">Build Your Own Lisp</a></li>
-<li><a target="_blank" rel="noopener" href="https://viewsourcecode.org/snaptoken/kilo/">Build Your Own Text Editor</a></li>
-<li><a target="_blank" rel="noopener" href="https://eli.thegreenplace.net/2017/concurrent-servers-part-1-introduction/">Concurrent Servers</a></li>
-<li><a target="_blank" rel="noopener" href="http://digitalsoundandmusic.com/chapters/ch5/5-3/">Digital sound and music</a></li>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>mk
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://cpp123.xyz/2021/11/05/Linux%E5%9F%BA%E7%A1%80/" title="Linux基础">http://cpp123.xyz/2021/11/05/Linux基础/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
 </ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/22/c++projects/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
+</div>
 
-    
-    
-    
 
-     
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" rel="prev" title="网络编程">
+      <i class="fa fa-chevron-left"></i> 网络编程
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://cpp123.xyz/2021/09/22/taskLists/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="mk">
-      <meta itemprop="description" content="无惛惛之事者，无赫赫之功；无冥冥之志者，无昭昭之明。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小书屋">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/22/taskLists/" class="post-title-link" itemprop="url">project_list</a>
-        </h2>
-
-        <div class="post-meta">
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-09-22 00:03:14 / 修改时间：00:19:42" itemprop="dateCreated datePublished" datetime="2021-09-22T00:03:14+08:00">2021-09-22</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>6.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="项目清单"><a href="#项目清单" class="headerlink" title="项目清单"></a>项目清单</h1><p>这个列表原本来自伯乐在线的一篇<a target="_blank" rel="noopener" href="http://blog.importnew.com/49762/">译文</a>。计划打算逐步实现清单中的项目。</p>
-<h3 id="文本操作"><a href="#文本操作" class="headerlink" title="文本操作"></a>文本操作</h3><ul>
-<li>  逆转字符串——输入一个字符串，将其逆转并输出。</li>
-<li>  拉丁猪文字游戏——这是一个英语语言游戏。基本规则是将一个英语单词的第一个辅音音素的字母移动到词尾并且加上后缀-ay（譬如“banana”会变成“anana-bay”）。可以在维基百科上了解更多内容。</li>
-<li>  统计元音字母——输入一个字符串，统计处其中元音字母的数量。更复杂点的话统计出每个元音字母的数量。</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/22/taskLists/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://cpp123.xyz/2021/09/22/C++%E8%B0%83%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="mk">
-      <meta itemprop="description" content="无惛惛之事者，无赫赫之功；无冥冥之志者，无昭昭之明。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小书屋">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/22/C++%E8%B0%83%E8%AF%95/" class="post-title-link" itemprop="url">C++调试</a>
-        </h2>
-
-        <div class="post-meta">
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-09-22 00:00:10 / 修改时间：00:16:19" itemprop="dateCreated datePublished" datetime="2021-09-22T00:00:10+08:00">2021-09-22</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="C-C-代码调试的艺术"><a href="#C-C-代码调试的艺术" class="headerlink" title="C/C++代码调试的艺术"></a>C/C++代码调试的艺术</h1><h2 id="VC"><a href="#VC" class="headerlink" title="VC"></a>VC</h2><h3 id="1、断点管理"><a href="#1、断点管理" class="headerlink" title="1、断点管理"></a>1、断点管理</h3><ol>
-<li>设置、删除断点</li>
-<li>禁用断点</li>
-<li>查看断点</li>
-</ol>
-<h3 id="2、内存查看"><a href="#2、内存查看" class="headerlink" title="2、内存查看"></a>2、内存查看</h3><h4 id="1、字符串内存布局"><a href="#1、字符串内存布局" class="headerlink" title="1、字符串内存布局"></a>1、字符串内存布局</h4><ul>
-<li><strong>ALT+6</strong>打开内存窗口</li>
-<li>将字符串拖入或者输入字符串可查看内存布局</li>
-<li>宽字符（UNICODE编码）：每个字符占2个字节。 UTF-8中文字符3个字节，英文1个字节</li>
-</ul>
-<h4 id="2、整型变量内存布局"><a href="#2、整型变量内存布局" class="headerlink" title="2、整型变量内存布局"></a>2、整型变量内存布局</h4>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/22/C++%E8%B0%83%E8%AF%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -974,6 +530,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#11%E6%9C%88LInux%E5%9F%BA%E7%A1%80%E6%89%93%E5%8D%A1"><span class="nav-number">1.</span> <span class="nav-text">11月LInux基础打卡</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A11%EF%BC%9A%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%99%BB%E5%BD%95%E6%8C%87%E5%AE%9A%E7%9A%84Linux%E7%8E%AF%E5%A2%83"><span class="nav-number">1.1.</span> <span class="nav-text">任务1：使用命令行登录指定的Linux环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A12%EF%BC%9A%E5%9C%A8%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E3%80%81%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">1.2.</span> <span class="nav-text">任务2：在目录下创建文件夹、删除文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A13%EF%BC%9A%E5%9C%A8%E7%9B%AE%E5%BD%95%E4%B8%8B%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E3%80%81%E9%98%85%E8%AF%BB%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">任务3：在目录下下载文件、阅读文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
