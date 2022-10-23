@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>hexo写作使用笔记</title>
+      <link href="/2022/10/23/hexo%E5%86%99%E4%BD%9C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/"/>
+      <url>/2022/10/23/hexo%E5%86%99%E4%BD%9C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="使用hexo进行博客写作"><a href="#使用hexo进行博客写作" class="headerlink" title="使用hexo进行博客写作"></a>使用hexo进行博客写作</h1><h2 id="1-创建文章或页面"><a href="#1-创建文章或页面" class="headerlink" title="1.创建文章或页面"></a>1.创建文章或页面</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure><p>layout默认为<code>post</code>，可以在<code>_config.yml</code>文件中修改</p><span id="more"></span><h2 id="2-布局（Layout）"><a href="#2-布局（Layout）" class="headerlink" title="2.布局（Layout）"></a>2.布局（Layout）</h2><p>Hexo 有三种默认布局：<code>post</code>、<code>page</code> 和 <code>draft</code>，创建时会保存到不同的路径中</p><ul><li>post —-&gt; source/_posts</li><li>page —-&gt; source</li><li>draft —–&gt; source/_drafts</li></ul><h2 id="3-文件名称"><a href="#3-文件名称" class="headerlink" title="3. 文件名称"></a>3. 文件名称</h2><p>默认以标题为文件名。</p><h2 id="4-草稿"><a href="#4-草稿" class="headerlink" title="4.草稿"></a>4.草稿</h2><p>使用<code>hexo publish [layout] &lt;title&gt;</code>发布草稿</p><h2 id="5-模板"><a href="#5-模板" class="headerlink" title="5.模板"></a>5.模板</h2><p>根据<code>scaffods</code>文件夹对应的文件建立文件</p><h2 id="6-服务器"><a href="#6-服务器" class="headerlink" title="6.服务器"></a>6.服务器</h2><ul><li>启动服务器 <code>hexo server</code>,会在locakhost:4000下启动</li><li>更改端口：<code>hexo server -p 5000</code></li><li>静态模式: <code>hexo server -s</code></li><li>自定义ip： <code>hexo server -i 192.168.1.1</code></li></ul><h2 id="7-生成文件"><a href="#7-生成文件" class="headerlink" title="7.生成文件"></a>7.生成文件</h2><ul><li><code>hexo generate</code> 生成静态文件</li><li><code>hexo generate --watch</code> 监视文件变得并立即重新生成静态文件。</li><li><code>hexo gegerate --deploy</code> 在生成完毕后自动部署，可简写为<code>hexo g -d</code></li></ul><h2 id="8-部署"><a href="#8-部署" class="headerlink" title="8.部署"></a>8.部署</h2><ul><li>一键部署： <code>hexo deploy</code></li></ul><h2 id="9-参考文档"><a href="#9-参考文档" class="headerlink" title="9.参考文档"></a>9.参考文档</h2><ul><li>官方教程：<a href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a></li></ul><p>*</p><p>*</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> hexo  教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>滑动窗口</title>
       <link href="/2021/11/07/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"/>
       <url>/2021/11/07/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</url>
