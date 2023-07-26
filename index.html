@@ -221,7 +221,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-07-26 15:33:27 / 修改时间：16:03:32" itemprop="dateCreated datePublished" datetime="2023-07-26T15:33:27+08:00">2023-07-26</time>
+              <time title="创建时间：2023-07-26 15:33:27 / 修改时间：16:17:21" itemprop="dateCreated datePublished" datetime="2023-07-26T15:33:27+08:00">2023-07-26</time>
             </span>
 
           <br>
@@ -250,28 +250,14 @@
 
       
           <h2 id="Git-forked的仓库与源仓库同步记录"><a href="#Git-forked的仓库与源仓库同步记录" class="headerlink" title="Git forked的仓库与源仓库同步记录"></a>Git forked的仓库与源仓库同步记录</h2><p>本次记录适用与github和gitlink的仓库，其他git仓库类似。</p>
-<h3 id="一、本次仓库检查与调整"><a href="#一、本次仓库检查与调整" class="headerlink" title="一、本次仓库检查与调整"></a>一、本次仓库检查与调整</h3><ol>
-<li>进入本地仓库目录</li>
-<li>查看远程仓库 <code>git remote -v</code><ol>
-<li><img src="/2023/07/26/git%E4%BB%93%E5%BA%93%E5%90%8C%E6%AD%A5/image-20230726155408102.png" alt="image-20230726155408102">这种情况说明当前远程仓库只有自己forked的仓库</li>
-<li>需要添加源仓库，见步骤3</li>
-</ol>
-</li>
-<li>添加上游仓库 <code>git remote add upstream  https://gitlink.org.cn/xuos/xiuos.git</code><ol>
-<li>此时在执行步骤2，可以看到上游仓库已经添加</li>
-<li><img src="/2023/07/26/git%E4%BB%93%E5%BA%93%E5%90%8C%E6%AD%A5/image-20230726155735403.png" alt="image-20230726155735403"></li>
-</ol>
-</li>
-<li>执行命令 <code>git status</code>检查本地是否有修改并未保存。如果有则保存并推送到远程git仓库</li>
-</ol>
-<h3 id="二、上游仓库同步"><a href="#二、上游仓库同步" class="headerlink" title="二、上游仓库同步"></a>二、上游仓库同步</h3><ol start="5">
-<li>抓取上游仓库更新<code>git fetch upstream</code></li>
-<li>切换到要进行合并的分支：<code>git checkout 2023_open_source_contest</code></li>
-<li>合并上游仓库： <code>it merge upstream/2023_open_source_contest</code></li>
-<li>推送更新到远程仓库: <code>git push origin 2023_open_source_contest</code></li>
-</ol>
-<p>之后可以检测本地仓库和远程仓库是否更新。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/07/26/git%E4%BB%93%E5%BA%93%E5%90%8C%E6%AD%A5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
