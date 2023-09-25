@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>关于多线程的理解总结</title>
+      <link href="/2023/09/25/%E5%85%B3%E4%BA%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/"/>
+      <url>/2023/09/25/%E5%85%B3%E4%BA%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、-问题"><a href="#一、-问题" class="headerlink" title="一、 问题"></a>一、 问题</h2><ol><li>为什么要使用多线程</li><li>什么时候使用多线程</li><li>怎么使用多线程</li></ol><h2 id="二、-量化学习多线程"><a href="#二、-量化学习多线程" class="headerlink" title="二、 量化学习多线程"></a>二、 量化学习多线程</h2><h3 id="1、-CPU密集型"><a href="#1、-CPU密集型" class="headerlink" title="1、 CPU密集型"></a>1、 CPU密集型</h3><p>这类程序特点是IO操作很快，CPU计算类操作占比大。</p><ul><li><strong>单核CPU处理CPU密集型程序，这种情况并不太适合使用多线程</strong></li><li><strong>多核CPU 处理 CPU 密集型程序，可以最大化的利用 CPU 核心数，应用并发编程来提高效率</strong></li></ul><h3 id="2、-IO密集型"><a href="#2、-IO密集型" class="headerlink" title="2、 IO密集型"></a>2、 IO密集型</h3><p>这类程序特点是CPU运算结束之后，还有很多IO操作，即IO操作占比大。</p><p>IO操作特点：<strong>进行IO操作时，CPU处于空闲状态。</strong>即此类程序应该最大化利用CPU，避免过多的空闲状态。</p><ul><li>对于单核CPU， 线程CPU时间越短，需要越多的线程。线程CPU时间越久，需要越少的线程。</li></ul><h3 id="3、-线程数量的选择"><a href="#3、-线程数量的选择" class="headerlink" title="3、 线程数量的选择"></a>3、 线程数量的选择</h3><h4 id="1-cpu密集型"><a href="#1-cpu密集型" class="headerlink" title="1. cpu密集型"></a>1. cpu密集型</h4><p>理论数量： 线程数 = CPU核心数</p><p>实际数量： 线程数 = CPU核心数+1</p><p>核心数+1是一个经验值。这是为了避免某个线程出现错误（如页错误）或其他原因暂停时，CPU周期出现空闲。</p><p>即1个“替补线程”。</p><h4 id="2-IO密集型"><a href="#2-IO密集型" class="headerlink" title="2. IO密集型"></a>2. IO密集型</h4><p>单核：最佳线程数 = (1/CPU利用率) = 1 + (I/O耗时/CPU耗时)</p><p>多核：最佳线程数 = CPU核心数 <em>(1/CPU利用率) = CPU核心数</em> (1 + (I/O耗时/CPU耗时))</p><p>假如全是IO操作， 理论线程数=2N或2N+1</p><h4 id="3-CPU利用率、耗时的获取"><a href="#3-CPU利用率、耗时的获取" class="headerlink" title="3. CPU利用率、耗时的获取"></a>3. CPU利用率、耗时的获取</h4><p>利用现有工具，如SkyWalking等。</p><h4 id="4-阿姆达尔定律"><a href="#4-阿姆达尔定律" class="headerlink" title="4. 阿姆达尔定律"></a>4. 阿姆达尔定律</h4><p>不要盲目增加CPU核心数。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 多线程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>程序编译过程.md</title>
       <link href="/2023/09/14/%E7%A8%8B%E5%BA%8F%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/"/>
       <url>/2023/09/14/%E7%A8%8B%E5%BA%8F%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/</url>
