@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>协程初探</title>
+      <link href="/2023/09/26/%E5%8D%8F%E7%A8%8B%E5%88%9D%E6%8E%A2/"/>
+      <url>/2023/09/26/%E5%8D%8F%E7%A8%8B%E5%88%9D%E6%8E%A2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、基础概念"><a href="#一、基础概念" class="headerlink" title="一、基础概念"></a>一、基础概念</h1><p>C++从20开始支持原生协程，今天做个简单的总结。</p><span id="more"></span><h2 id="1-什么是协程"><a href="#1-什么是协程" class="headerlink" title="1. 什么是协程"></a>1. 什么是协程</h2><h2 id="2-协程的优势"><a href="#2-协程的优势" class="headerlink" title="2. 协程的优势"></a>2. 协程的优势</h2><h2 id="3-分类"><a href="#3-分类" class="headerlink" title="3. 分类"></a>3. 分类</h2><p>协程分为<strong>有栈协程</strong>和<strong>无栈协程</strong>。</p><p>这里的栈是什么？ 有栈无栈指协程运行时是否存在<strong>调用栈</strong>。</p><p>什么是调用栈？</p><p>函数调用另一个函数的时候存在一个调用栈。函数栈帧是指esp和ebp之间的一块地址。ESP是栈顶指针，EBP是存取堆栈指针。主要包括函数的局部变量，返回地址以及参数。</p><h2 id="4-有栈协程"><a href="#4-有栈协程" class="headerlink" title="4. 有栈协程"></a>4. 有栈协程</h2><p>概念：coroutine就是可以<strong>中断并恢复执行</strong>的subroutine（子程序）。</p><p>实现难点在于如何像函数一样切换协程，在满足条件时切换回来。</p><p>方式之一是：保存协程的上下文，切换时进行上下文切换，即保存寄存器的值。一种实现是使用汇编，如libco库。一种是使用ucontext.h库。</p><p>有栈协程由于需要对寄存器进行保存和修改，以及协程栈的分配，因此效率上可能会有损失。</p><h2 id="5-无栈协程"><a href="#5-无栈协程" class="headerlink" title="5.无栈协程"></a>5.无栈协程</h2><p>无栈协程本质是一个状态机，协程的切换本质上是<strong>指令指针寄存器的改变</strong>。</p><p>相比有栈协程把局部变量放在新开的空间上，无栈协程直接<strong>使用系统栈</strong>使得CPU cache局部性更好，同时也使得无栈协程的中断和函数返回几乎没有区别。</p><p>即无栈协程共用一个系统栈。</p><h2 id="6-非对称协程和对称协程："><a href="#6-非对称协程和对称协程：" class="headerlink" title="6.非对称协程和对称协程："></a>6.非对称协程和对称协程：</h2><ul><li>非对称协程：即协程之间有明显的<strong>调用关系</strong>。协程出让调度权的目标只能是它的调用者。</li><li>对称协程: 协程之间相互独立且平等，调度圈可以任意协程之间转移。</li></ul><p>协程的主要目的是优化IO密集型的应用。</p><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ol><li><a href="https://zhuanlan.zhihu.com/p/71168084">Call Stack（调用栈）是什么？ - 知乎 (zhihu.com)</a></li><li><a href="https://zhuanlan.zhihu.com/p/347445164">浅谈有栈协程与无栈协程 - 知乎 (zhihu.com)</a></li><li></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> c++ 协程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>关于多线程的理解总结</title>
       <link href="/2023/09/25/%E5%85%B3%E4%BA%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/"/>
       <url>/2023/09/25/%E5%85%B3%E4%BA%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/</url>
