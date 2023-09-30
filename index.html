@@ -194,6 +194,103 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lowlearner.github.io/2023/09/27/%E5%8D%8F%E7%A8%8B%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E4%B8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="mk">
+      <meta itemprop="description" content="无惛惛之事者，无赫赫之功；无冥冥之志者，无昭昭之明。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CPP一二、三">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/09/27/%E5%8D%8F%E7%A8%8B%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E4%B8%80/" class="post-title-link" itemprop="url">协程使用基础一</a>
+        </h2>
+
+        <div class="post-meta">
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-27 16:06:37" itemprop="dateCreated datePublished" datetime="2023-09-27T16:06:37+08:00">2023-09-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-30 19:36:41" itemprop="dateModified" datetime="2023-09-30T19:36:41+08:00">2023-09-30</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>cppreference中定义：协程是能<strong>暂停</strong>执行以在之后<strong>恢复</strong>的函数。协程是<strong>无栈</strong>的：它们通过返回到调用方暂停执行，并且从栈分离存储恢复执行需要的数据。这样就可以<strong>编写异步执行的顺序代码</strong>（例如不使用显式的回调来处理非阻塞 I/O），还支持对惰性计算的无限序列上的算法及其他用途。</p>
+<p>一个协程是：</p>
+<ul>
+<li>使用co_await运算符暂停执行，直到恢复</li>
+<li>使用co_yield暂停并返回一个值</li>
+<li>使用co_return完成执行并返回一个值</li>
+</ul>
+<p>一个函数，只要使用了这三个关键字之一，就会被编译器当作Coroutine。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/09/27/%E5%8D%8F%E7%A8%8B%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E4%B8%80/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+     
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://lowlearner.github.io/2023/09/26/%E5%8D%8F%E7%A8%8B%E5%88%9D%E6%8E%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -949,92 +1046,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lowlearner.github.io/2022/10/23/hexo%E5%86%99%E4%BD%9C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="mk">
-      <meta itemprop="description" content="无惛惛之事者，无赫赫之功；无冥冥之志者，无昭昭之明。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CPP一二、三">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/10/23/hexo%E5%86%99%E4%BD%9C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">hexo写作使用笔记</a>
-        </h2>
-
-        <div class="post-meta">
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-10-23 22:14:37 / 修改时间：23:00:01" itemprop="dateCreated datePublished" datetime="2022-10-23T22:14:37+08:00">2022-10-23</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>533</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="使用hexo进行博客写作"><a href="#使用hexo进行博客写作" class="headerlink" title="使用hexo进行博客写作"></a>使用hexo进行博客写作</h1><h2 id="1-创建文章或页面"><a href="#1-创建文章或页面" class="headerlink" title="1.创建文章或页面"></a>1.创建文章或页面</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<p>layout默认为<code>post</code>，可以在<code>_config.yml</code>文件中修改</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/10/23/hexo%E5%86%99%E4%BD%9C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1106,7 +1117,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1117,7 +1128,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
